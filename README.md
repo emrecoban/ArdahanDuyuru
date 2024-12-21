@@ -1,4 +1,4 @@
-Chrome eklentisi bir açık kaynak MIT lisanslı ve ARDAHAN ÜNİVERSİTESİ resmi web sitesi Duyurular kısmını eklentisi oluşturulmuştur
+Chrome eklentisi bir açık kaynak kodlu ve ARDAHAN ÜNİVERSİTESİ resmi web sitesi Duyurular kısmını eklentisi oluşturulmuştur.
 
 SORUN:
 Bu eklentiyi oluşturma amacımız her defasında ARDAHAN ÜNİVERSİTESİ remi web sitesine tıklayıp ve duyurulara bakmaktan ziyade eklenti olarak kullanıcılarının güncel olarak ve kullanım kolaylığı açısınıdan basit anlaşılır bir eklentidir.
@@ -27,8 +27,8 @@ Destek:
 -Bu repoya bir yıldız verin.
 -Üzerine bir inceleme bırakın Google Chrome Web Mağazası.
 
-Lisans:
-ARÜ'den Duyurular, şartları altında açık kaynak olarak mevcuttur. MIT Lisansı.
+
+-ARÜ'den Duyurular, şartları altında açık kaynak olarak mevcuttur.
 
 
 
