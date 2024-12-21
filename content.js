@@ -2,6 +2,7 @@
 const pageLinks = [];
 const links = document.querySelectorAll("a"); // Tüm <a> etiketlerini seç
 
+
 links.forEach((link) => {
   pageLinks.push({
     text: link.innerText.trim() || "Link Metni Yok", // Link metni boşsa alternatif göster

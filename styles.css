@@ -32,3 +32,39 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.duy{
+  text-align: left;
+  color: #192A56;
+  margin-left: 10px;
+}
+
+.hr{
+  height: 2px;
+  background-color: #FF8901;
+}
+
+.megaphone{
+  height: 35px;
+  width: 35px;
+}
+
+.Tduy{
+  color: #ffffff;
+  background-color: #FF8901;
+  padding: 1px 2px; 
+  border-radius: 20px;
+  font-size: 13px; 
+  margin-left: 205px;
+  display: inline-block; 
+  border: 1px solid #FF8901; 
+  margin-top: 1px;
+}
+
+
+.logo{
+  height: 35px;
+  width: 35px;
+}
+
+
