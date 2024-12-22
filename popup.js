@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         a.target = "_blank"; // Yeni sekmede aç
         li.appendChild(a);
         listElement.appendChild(li);
-      });
+      }); 
     } else {
       listElement.textContent = "Hiçbir bağlantı bulunamadı.";
     }
