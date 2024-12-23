@@ -44,6 +44,7 @@ Bu projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımlar�
    ```
    <br><br>
 Ekran Görüntüleri :
+
 ![Proje Görseli](/1.1-guncel.png)
 
 ## Kullanım
