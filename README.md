@@ -42,8 +42,8 @@ Bu projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımlar�
    ```bash
    Klasörü içe aktarmak için sayfanın herhangi bir yerine sürükleyin (daha sonra klasörü silmeyin).
    ```
-   <br><br>
-Ekran Görüntüleri :
+
+## Ekran Görüntüleri
 
 ![Proje Görseli](/1.1-guncel.png)
 
