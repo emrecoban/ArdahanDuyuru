@@ -12,7 +12,8 @@
   },
   "permissions": [
     "storage",
-    "alarms"
+    "alarms",
+    "notifications"
   ],
   "host_permissions": [
     "*://*.ardahan.edu.tr/*"

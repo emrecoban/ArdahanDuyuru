@@ -62,6 +62,17 @@ async function checkForNewAnnouncements() {
                 chrome.action.setBadgeText({ text: totalCount.toString() });
                 chrome.action.setBadgeBackgroundColor({ color: "#e74c3c" }); // Kırmızı arkaplan
 
+                // Masaüstü bildirimi (Notification) gösterimi
+                chrome.notifications.create({
+                    type: 'basic',
+                    iconUrl: 'icon-128.png',
+                    title: 'ARÜ Yeni Duyuru!',
+                    message: `${newAnnouncementsCount} adet yeni duyuru eklendi.`,
+                    priority: 2
+                }, (notificationId) => {
+                    if (chrome.runtime.lastError) console.warn("Bildirim hatası:", chrome.runtime.lastError.message);
+                });
+
                 // Storage güncellemesi
                 chrome.storage.local.set({
                     unreadCount: totalCount,
