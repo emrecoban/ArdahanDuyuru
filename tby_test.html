@@ -1,0 +1,1932 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="tr"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="tr"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="tr"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="tr">
+<!--<![endif]-->
+
+<head>
+    <title>Anasayfa | T.C. ARDAHAN ÜNİVERSİTESİ TEKNİK BİLİMLER MESLEK YÜKSEKOKULU</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="Teknik Bilimler, Meslek Y&#252;ksekokulu, Ardahan &#220;niversitesi," />
+    <meta name="author" content="Tarsus Üniversitesi - Bilgi İşlem Daire Başkanlığı" />
+    <link rel="stylesheet" href='/_Resources/css/google.css' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="/_Resources/bootstrap/css/bootstrap.css" />
+    <link href="/_Resources/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="/_Resources/css/font-awesome.css?v=2" />
+    <link type="text/css" rel="stylesheet" href="/_Resources/css/animate.css" />
+    <link type="text/css" rel="stylesheet" href="/_Resources/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="/_Resources/css/superfish.css" />
+    <link type="text/css" rel="stylesheet" href="/_Resources/css/yamm.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+
+    <link rel="shortcut icon" href="/_Resources/images/ruicon.ico">
+
+
+    <script src="/_Resources/js/jquery.js"></script>
+    <script src="/_Resources/js/fancybox/jquery.fancybox.js"></script>
+
+    <script type="text/javascript" src="/_Resources/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/_Resources/js/modernizr.js"></script>
+    <script type="text/javascript" src="/_Resources/js/superfish.js"></script>
+
+
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" alt=""/>
+        </a>
+    </div>
+    <![endif]-->
+
+
+</head>
+
+<body>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#menu a').each(function () { // menüye ikon ekleme kısmı
+                if ($(this).parent().children().length > 1) {
+                    $(this).html($(this).html() + '<i class="fa fa-angle-down"></i>');
+                }
+            });
+
+            $(".fancyImageGallery").fancybox();
+
+        });
+
+    </script>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+
+            // İkonu da değiştirmek istersen:
+            const icon = document.querySelector('button[onclick="toggleDarkMode()"] i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    </script>
+
+    <style>
+        .dark-mode {
+            background-color: #121212 !important;
+            color: #ffffff !important;
+        }
+
+        .dark-mode a,
+        .dark-mode p,
+        .dark-mode span,
+        .dark-mode li,
+        .dark-mode h1,
+        .dark-mode h2,
+        .dark-mode h3,
+        .dark-mode td,
+        .dark-mode th {
+            color: #ffffff !important;
+        }
+
+        .dark-mode .navbar {
+            background-color: #1e1e1e !important;
+        }
+
+        .dark-mode .card {
+            background-color: #2c2c2c;
+            color: white;
+        }
+
+        .dark-mode a {
+            color: #121212 !important;
+        }
+
+        .font-small {
+            font-size: 14px;
+        }
+
+        .font-medium {
+            font-size: 16px;
+        }
+
+        .font-large {
+            font-size: 18px;
+        }
+    </style>
+
+
+    <script>
+        function changeFontSize(size) {
+            const targets = document.querySelectorAll("body, .event-small-details , .event-small-title,a,p");
+
+            targets.forEach(target => {
+                target.classList.remove("font-small", "font-medium", "font-large");
+
+                switch (size) {
+                    case "small":
+                        target.classList.add("font-small");
+                        break;
+                    case "medium":
+                        target.classList.add("font-medium");
+                        break;
+                    case "large":
+                        target.classList.add("font-large");
+                        break;
+                }
+            });
+
+            // Kullanıcının seçimini kaydet
+            localStorage.setItem("fontSize", size);
+        }
+
+        // Sayfa yüklendiğinde daha önceki ayarı uygula
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedSize = localStorage.getItem("fontSize") || "medium";
+            changeFontSize(savedSize);
+        });
+    </script>
+
+
+
+
+
+    <div class="responsive-navigation visible-sm visible-xs">
+        <div class="container visible-sm visible-xs">
+            <div class="row" style="margin:5px 0px;">
+                <form method="get" action="/tr/search">
+                    <div class="input-group col-md-4 pull-right">
+                        <input type="text" class="earch-query form-control" name="s" placeholder="Ara" />
+                        <span class="input-group-btn">
+
+                            <input type="submit" value="Ara" class="btn" style="background: #21416a;color:#fff;" />
+
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <a href="#" class="menu-toggle-btn">
+            <i class="fa fa-bars"></i>
+        </a>
+        <div class="responsive_menu">
+
+            <ul class="main_menu">
+                <ul id="menu">
+                    <li id="silinmez"><a href="">Meslek Yüksekokulumuz</a>
+                        <ul>
+                            <li id="silinmez"><a href="/tr/page/genel-bilgiler/15224">Genel Bilgiler</a></li>
+                            <li id="silinmez"><a href="/tr/page/misyon-vizyon/15407">Misyon Vizyon</a></li>
+                            <li id="silinmez"><a href="">Yönetim</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/yuksekokul-kurulu/15619">Yüksekokul Kurulu</a>
+                                    </li>
+                                    <li id="silinmez"><a href="/tr/page/yuksekokul-yonetim-kurulu/15618">Yüksekokul
+                                            Yönetim Kurulu</a></li>
+                                    <li id="silinmez"><a href="/tr/page/yonetim/19104">Yüksekokulu Yönetimi</a></li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/komisyonlar-ve-koordinatorlukler/15621">Komisyonlar ve
+                                    Koordinatörlükler</a></li>
+                            <li id="silinmez"><a
+                                    href="/tr/page/idari-yardimci-ve-diger-birimler-ve-personel/15620">İdari/Yardımcı ve
+                                    Diğer Birimler ve Personel</a></li>
+                        </ul>
+                    </li>
+                    <li id="silinmez"><a href="">Bölümler</a>
+                        <ul>
+                            <li id="silinmez"><a href="/tr/page/bilgisayar-teknolojileri-bolumu/15225">Bilgisayar
+                                    Teknolojileri Bölümü</a>
+                                <ul>
+                                    <li id="silinmez"><a
+                                            href="/tr/page/bilgisayar-programciligi-programi/15226">Bilgisayar
+                                            Programcılığı Programı</a></li>
+                                    <li id="silinmez"><a
+                                            href="/tr/page/saglik-bilgi-sistemleri-teknikerligi-programi/15227">Sağlık
+                                            Bilgi Sistemleri Teknikerliği Programı</a></li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/bitkisel-ve-hayvansal-uretim-bolumu/15228">Bitkisel ve
+                                    Hayvansal Üretim Bölümü</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/aricilik-programi/15229">Arıcılık Programı</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/elektrik-ve-enerji-bolumu/15230">Elektrik ve Enerji
+                                    Bölümü</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/elektrik-programi/15231">Elektrik Programı</a>
+                                    </li>
+                                    <li id="silinmez"><a
+                                            href="/tr/page/alternatif-enerji-kaynaklari-teknolojisi-programi/15232">Alternatif
+                                            Enerji Kaynakları Teknolojisi Programı</a></li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/gida-isleme-bolumu/15233">Gıda İşleme Bölümü</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/gida-teknolojisi-programi/15234">Gıda
+                                            Teknolojisi Programı</a></li>
+                                    <li id="silinmez"><a
+                                            href="/tr/page/gida-kalite-ve-kontrol-analizi-programi/17719">Gıda Kalite ve
+                                            Kontrol Analizi Programı</a></li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/insaat-bolumu/15235">İnşaat Bölümü</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/insaat-teknolojisi-programi/15236">İnşaat
+                                            Teknolojisi Programı</a></li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/mulkiyet-koruma-ve-guvenlik-bolumu/15237">Mülkiyet
+                                    Koruma ve Güvenlik Bölümü</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/is-sagligi-ve-guvenligi-programi/15238">İş
+                                            Sağlığı ve Güvenliği Programı</a></li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/otel-lokanta-ve-ikram-hizmetleri-bolumu/15239">Otel
+                                    Lokanta ve İkram Hizmetleri Bölümü</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/ascilik-programi/15240">Aşçılık Programı</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/sac-ve-guzellik-hizmetleri-bolumu/15241">Saç ve Güzellik
+                                    Hizmetleri Bölümü</a>
+                                <ul>
+                                    <li id="silinmez"><a
+                                            href="/tr/page/sac-bakimi-ve-guzellik-hizmetleri-programi/15242">Saç Bakımı
+                                            ve Güzellik Hizmetleri Programı</a></li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/tibbi-hizmetler-ve-teknikler-bolumu/15243">Tıbbi
+                                    Hizmetler ve Teknikler Bölümü</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/optisyenlik-programi/15244">Optisyenlik
+                                            Programı</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="silinmez"><a href="">Öğrenci</a>
+                        <ul>
+                            <li id="silinmez"><a href="/tr/page/ders-programlari/15712">Ders Programları</a></li>
+                            <li id="silinmez"><a href="/tr/page/bolum-danismanlari/15246">Bölüm Danışmanları</a></li>
+                            <li id="silinmez"><a href="/tr/page/ders-icerikleri/15248">Ders İçerikleri</a></li>
+                            <li id="silinmez"><a href="https://ubys.ardahan.edu.tr/">Öğrenci Bilgi Sistemi</a></li>
+                            <li id="silinmez"><a href="/tr/page/staj-islemleri/15250">Staj İşlemleri</a></li>
+                            <li id="silinmez"><a href="/tr/page/cift-anadal-programi-islemleri/15251">Çift Anadal
+                                    Programı İşlemleri</a></li>
+                            <li id="silinmez"><a href="/tr/page/akademik-takvim/15672">Akademik Takvim</a></li>
+                        </ul>
+                    </li>
+                    <li id="silinmez"><a href="/tr/page/formlar/15245">Form ve Dilekçeler</a></li>
+                    <li id="silinmez"><a href="#">Personel</a>
+                        <ul>
+                            <li id="silinmez"><a href="/tr/akademikpersonel">Akademik Personel</a></li>
+                            <li id="silinmez"><a href="/tr/idaripersonel">İdari Personel</a></li>
+                        </ul>
+                    </li>
+                    <li id="silinmez"><a href="">Kalite Yönetimi</a>
+                        <ul>
+                            <li id="silinmez"><a href="/tr/page/kalite-kurulu/15671">Kalite Kurulu</a></li>
+                            <li id="silinmez"><a href="/tr/page/organizasyon-semasi/15617">Organizasyon Şeması</a></li>
+                            <li id="silinmez"><a href="/tr/page/ic-ve-dis-paydaslar/18598">İç ve Dış Paydaşlar</a></li>
+                            <li id="silinmez"><a href="/tr/page/gorev-tanim/15622">Görev Tanımları</a></li>
+                            <li id="silinmez"><a href="">Formlar</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/akademik-formlar/19474">Akademik Formlar</a>
+                                    </li>
+                                    <li id="silinmez"><a href="/tr/page/idari-formlar/19475">İdari Formlar</a></li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="">Eylem Planı</a>
+                                <ul>
+                                    <li id="silinmez"><a href="/tr/page/akademik-personel-eylem-plani/19392">Akademik
+                                            Personel Eylem Planı</a></li>
+                                    <li id="silinmez"><a
+                                            href="/tr/page/idari-personel-memnuniyeti-iyilestirme-eylem-plani/19395">İdari
+                                            Personel Memnuniyeti İyileştirme Planı</a></li>
+                                    <li id="silinmez"><a
+                                            href="/tr/page/ogrenci-memnuniyeti-iyilestirme-eylem-plani/19394">Öğrenci
+                                            Memnuniyeti İyileştirme Eylem Planı</a></li>
+                                    <li id="silinmez"><a
+                                            href="/tr/page/dis-paydas-memnuniyeti-iyilestirme-eylem-plani/19393">Dış
+                                            Paydaş Memnuniyeti İyileştirme Eylem Planı</a></li>
+                                </ul>
+                            </li>
+                            <li id="silinmez"><a href="/tr/page/is-akis-semalari/15670">İş Akış Şemaları</a></li>
+                            <li id="silinmez"><a href="/tr/page/faaliyet-raporlari/15669">Faaliyet Raporları</a></li>
+                            <li id="silinmez"><a href="/tr/page/birim-ic-degerlendirme-raporlari/17720">Birim İç
+                                    Değerlendirme Raporları</a></li>
+                            <li id="silinmez"><a href="/tr/page/istatistik-ve-temel-gostergeler/18601">İstatistik ve
+                                    Temel Göstergeler</a></li>
+                            <li id="silinmez"><a href="/tr/page/kalite-yonetim-belgesi/18258">Kalite Yönetim Belgesi</a>
+                            </li>
+                            <li id="silinmez"><a
+                                    href="/tr/page/yuksekogretim-kurumlari-etik-davranis-ilkeleri-klavuzu/18594">Yükseköğretim
+                                    Kurumları Etik Davranış İlkeleri </a></li>
+                        </ul>
+                    </li>
+                    <li id="silinmez"><a href="/tr/contact">İletişim</a></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 header-logo">
+                    <div class="logo">
+
+
+
+
+                        <img style="height: 120px; padding: 10px 0px; float:left;" class="img-responsive"
+                            src="http://webyenitest.ardahan.edu.tr/Images/Uploads/Logos/logo-1.png" />
+                        <span
+                            style="float:left;margin-top:15px;font-size:20px;margin-left:10px;width:350px;font-weight:bold;font-family:TrajanPro">
+
+
+
+
+                            <a href="http://tby.ardahan.edu.tr">
+                                <span style="display:block;"></span>
+                            </a>
+                            <a href="http://tby.ardahan.edu.tr/en">
+                                <span style="display:block;"></span>
+                            </a>
+
+                            <a href="/tr">
+                                <span style="font-size:20px;">T.C. ARDAHAN &#220;NİVERSİTESİ TEKNİK BİLİMLER MESLEK
+                                    Y&#220;KSEKOKULU </span>
+                            </a>
+
+                        </span>
+
+                        <span style="clear:both;"></span>
+
+
+                    </div>
+                </div>
+
+                <div class="header-top bg-light py-2 border-bottom">
+                    <div class="container">
+                        <div class="d-flex justify-content-end align-items-center gap-3" style="white-space: nowrap;">
+
+
+                            <!-- Tüm kontrollerin tek div içinde birleşmiş hali -->
+                            <div class="d-flex align-items-center gap-3" style="margin-top: 20px; font-size: 16px;">
+
+                                <!-- Gece Modu Butonu -->
+                                <button class="btn btn-link text-dark p-0 m-0" onclick="toggleDarkMode()"
+                                    title="Gece Modu" style="line-height: 1;">
+                                    <i class="fas fa-moon" style="font-size: 18px;"></i>
+                                </button>
+
+                                <span class="text-muted">|</span>
+
+                                <!-- Yazı Boyutu Kontrolleri -->
+                                <a href="#" class="text-dark text-decoration-none" style="font-size: 14px;"
+                                    onclick="changeFontSize('small')">A</a>
+                                <a href="#" class="text-dark text-decoration-none" style="font-size: 18px;"
+                                    onclick="changeFontSize('medium')">A</a>
+                                <a href="#" class="text-dark text-decoration-none" style="font-size: 22px;"
+                                    onclick="changeFontSize('large')">A</a>
+
+                                <span class="text-muted">|</span>
+
+                                <!-- Bayrak ve Ülke -->
+                                <img src="/_Resources/images/Flag_of_Turkey.png" alt="TR"
+                                    style="height: 24px; margin-right: 6px;">
+                                <span class="text-dark" style="font-size: 16px;">Türkiye Cumhuriyeti</span>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="nav-bar-main" role="navigation">
+                    <div class="container">
+                        <div class="navbar yamm main-navigation clearfix visible-md visible-lg">
+                            <div class="navbar-header center">
+                                <a style="display: block; padding: 9px 20px;" href="/tr"><i class="fa fa-home"></i></a>
+                            </div>
+                            <div id="navbar-collapse-grid" class="navbar-collapse collapse">
+
+                                <ul id="menu" class="nav navbar-nav sf-menu">
+                                    <li id="silinmez"><a href="">Meslek Yüksekokulumuz</a>
+                                        <ul>
+                                            <li id="silinmez"><a href="/tr/page/genel-bilgiler/15224">Genel Bilgiler</a>
+                                            </li>
+                                            <li id="silinmez"><a href="/tr/page/misyon-vizyon/15407">Misyon Vizyon</a>
+                                            </li>
+                                            <li id="silinmez"><a href="">Yönetim</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/yuksekokul-kurulu/15619">Yüksekokul
+                                                            Kurulu</a></li>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/yuksekokul-yonetim-kurulu/15618">Yüksekokul
+                                                            Yönetim Kurulu</a></li>
+                                                    <li id="silinmez"><a href="/tr/page/yonetim/19104">Yüksekokulu
+                                                            Yönetimi</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/komisyonlar-ve-koordinatorlukler/15621">Komisyonlar
+                                                    ve Koordinatörlükler</a></li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/idari-yardimci-ve-diger-birimler-ve-personel/15620">İdari/Yardımcı
+                                                    ve Diğer Birimler ve Personel</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="silinmez"><a href="">Bölümler</a>
+                                        <ul>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/bilgisayar-teknolojileri-bolumu/15225">Bilgisayar
+                                                    Teknolojileri Bölümü</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/bilgisayar-programciligi-programi/15226">Bilgisayar
+                                                            Programcılığı Programı</a></li>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/saglik-bilgi-sistemleri-teknikerligi-programi/15227">Sağlık
+                                                            Bilgi Sistemleri Teknikerliği Programı</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/bitkisel-ve-hayvansal-uretim-bolumu/15228">Bitkisel
+                                                    ve Hayvansal Üretim Bölümü</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/aricilik-programi/15229">Arıcılık
+                                                            Programı</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/elektrik-ve-enerji-bolumu/15230">Elektrik ve Enerji
+                                                    Bölümü</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/elektrik-programi/15231">Elektrik
+                                                            Programı</a></li>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/alternatif-enerji-kaynaklari-teknolojisi-programi/15232">Alternatif
+                                                            Enerji Kaynakları Teknolojisi Programı</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a href="/tr/page/gida-isleme-bolumu/15233">Gıda İşleme
+                                                    Bölümü</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/gida-teknolojisi-programi/15234">Gıda
+                                                            Teknolojisi Programı</a></li>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/gida-kalite-ve-kontrol-analizi-programi/17719">Gıda
+                                                            Kalite ve Kontrol Analizi Programı</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a href="/tr/page/insaat-bolumu/15235">İnşaat Bölümü</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/insaat-teknolojisi-programi/15236">İnşaat
+                                                            Teknolojisi Programı</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/mulkiyet-koruma-ve-guvenlik-bolumu/15237">Mülkiyet
+                                                    Koruma ve Güvenlik Bölümü</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/is-sagligi-ve-guvenligi-programi/15238">İş
+                                                            Sağlığı ve Güvenliği Programı</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/otel-lokanta-ve-ikram-hizmetleri-bolumu/15239">Otel
+                                                    Lokanta ve İkram Hizmetleri Bölümü</a>
+                                                <ul>
+                                                    <li id="silinmez"><a href="/tr/page/ascilik-programi/15240">Aşçılık
+                                                            Programı</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/sac-ve-guzellik-hizmetleri-bolumu/15241">Saç ve
+                                                    Güzellik Hizmetleri Bölümü</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/sac-bakimi-ve-guzellik-hizmetleri-programi/15242">Saç
+                                                            Bakımı ve Güzellik Hizmetleri Programı</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/tibbi-hizmetler-ve-teknikler-bolumu/15243">Tıbbi
+                                                    Hizmetler ve Teknikler Bölümü</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/optisyenlik-programi/15244">Optisyenlik
+                                                            Programı</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="silinmez"><a href="">Öğrenci</a>
+                                        <ul>
+                                            <li id="silinmez"><a href="/tr/page/ders-programlari/15712">Ders
+                                                    Programları</a></li>
+                                            <li id="silinmez"><a href="/tr/page/bolum-danismanlari/15246">Bölüm
+                                                    Danışmanları</a></li>
+                                            <li id="silinmez"><a href="/tr/page/ders-icerikleri/15248">Ders
+                                                    İçerikleri</a></li>
+                                            <li id="silinmez"><a href="https://ubys.ardahan.edu.tr/">Öğrenci Bilgi
+                                                    Sistemi</a></li>
+                                            <li id="silinmez"><a href="/tr/page/staj-islemleri/15250">Staj İşlemleri</a>
+                                            </li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/cift-anadal-programi-islemleri/15251">Çift Anadal
+                                                    Programı İşlemleri</a></li>
+                                            <li id="silinmez"><a href="/tr/page/akademik-takvim/15672">Akademik
+                                                    Takvim</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="silinmez"><a href="/tr/page/formlar/15245">Form ve Dilekçeler</a></li>
+                                    <li id="silinmez"><a href="#">Personel</a>
+                                        <ul>
+                                            <li id="silinmez"><a href="/tr/akademikpersonel">Akademik Personel</a></li>
+                                            <li id="silinmez"><a href="/tr/idaripersonel">İdari Personel</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="silinmez"><a href="">Kalite Yönetimi</a>
+                                        <ul>
+                                            <li id="silinmez"><a href="/tr/page/kalite-kurulu/15671">Kalite Kurulu</a>
+                                            </li>
+                                            <li id="silinmez"><a href="/tr/page/organizasyon-semasi/15617">Organizasyon
+                                                    Şeması</a></li>
+                                            <li id="silinmez"><a href="/tr/page/ic-ve-dis-paydaslar/18598">İç ve Dış
+                                                    Paydaşlar</a></li>
+                                            <li id="silinmez"><a href="/tr/page/gorev-tanim/15622">Görev Tanımları</a>
+                                            </li>
+                                            <li id="silinmez"><a href="">Formlar</a>
+                                                <ul>
+                                                    <li id="silinmez"><a href="/tr/page/akademik-formlar/19474">Akademik
+                                                            Formlar</a></li>
+                                                    <li id="silinmez"><a href="/tr/page/idari-formlar/19475">İdari
+                                                            Formlar</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a href="">Eylem Planı</a>
+                                                <ul>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/akademik-personel-eylem-plani/19392">Akademik
+                                                            Personel Eylem Planı</a></li>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/idari-personel-memnuniyeti-iyilestirme-eylem-plani/19395">İdari
+                                                            Personel Memnuniyeti İyileştirme Planı</a></li>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/ogrenci-memnuniyeti-iyilestirme-eylem-plani/19394">Öğrenci
+                                                            Memnuniyeti İyileştirme Eylem Planı</a></li>
+                                                    <li id="silinmez"><a
+                                                            href="/tr/page/dis-paydas-memnuniyeti-iyilestirme-eylem-plani/19393">Dış
+                                                            Paydaş Memnuniyeti İyileştirme Eylem Planı</a></li>
+                                                </ul>
+                                            </li>
+                                            <li id="silinmez"><a href="/tr/page/is-akis-semalari/15670">İş Akış
+                                                    Şemaları</a></li>
+                                            <li id="silinmez"><a href="/tr/page/faaliyet-raporlari/15669">Faaliyet
+                                                    Raporları</a></li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/birim-ic-degerlendirme-raporlari/17720">Birim İç
+                                                    Değerlendirme Raporları</a></li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/istatistik-ve-temel-gostergeler/18601">İstatistik ve
+                                                    Temel Göstergeler</a></li>
+                                            <li id="silinmez"><a href="/tr/page/kalite-yonetim-belgesi/18258">Kalite
+                                                    Yönetim Belgesi</a></li>
+                                            <li id="silinmez"><a
+                                                    href="/tr/page/yuksekogretim-kurumlari-etik-davranis-ilkeleri-klavuzu/18594">Yükseköğretim
+                                                    Kurumları Etik Davranış İlkeleri </a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="silinmez"><a href="/tr/contact">İletişim</a></li>
+                                </ul>
+
+                                <a class="toggle-search pull-right" id="search-link" href="javascript:;"><i
+                                        class="fa fa-search"></i></a>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="search-container" style="display:none;">
+                    <div class="container">
+                        <div class="row" style="margin:5px 0px;">
+                            <form method="get" action="/tr/search">
+                                <div class="input-group col-md-4 pull-right">
+                                    <input type="text" class="earch-query form-control" name="s" placeholder="Ara" />
+                                    <span class="input-group-btn">
+
+                                        <input type="submit" value="Ara" class="btn" style="background: #21416a;" />
+
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+    </header>
+
+    <div>
+
+
+
+
+
+
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+
+
+
+                    <div class="main-slideshow">
+                        <div class="flexslider" id="orta">
+                            <ul class="slides">
+
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/tbmyo-20102025185759.jpg" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/aru_kampus_cropped-4022026230911.jpg" alt="" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/4_cropped-4022026231253.jpg" alt="" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/muhendislik-ve-myo_croppe...-22022022141414.jpg"
+                                            alt="" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/bilgisayar_teknololjileri-7042026095038.jpg" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/aricilik_cropped-6042026103529.png" alt="" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/elektirik_tekonoljileri_c...-31032026155139.jpg"
+                                            alt="" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/gida_teknolojileri-7042026095120.jpg" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/insaat_teknolojileri-7042026095133.jpg" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/is_sagligi_guvenligi-7042026095145.jpg" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/ascilik-7042026095203.jpg" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/sac_guzellik-7042026095214.jpg" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="/Files/Images/optisyenlik-7042026095228.jpg" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-4">
+
+
+
+                    <div class="widget-main">
+                        <div class="widget-main-title">
+                            <h4 class="widget-title">
+                                Duyurular
+                                <span class="pull-right" style="font-size: 10px;">
+                                    <a href="/tr/news" target="_self">T&#252;m Duyurular</a>
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="widget-inner" id="duyuru" style="min-height: 390px;">
+
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/news-detail/ogrencilerimize-cay-ve-kek-ikrami-9-nisan-2026-persembe-saat-12-30-13-30/14976">
+                                        <span class="s-month">NİS</span>
+                                        <span class="s-date">8</span>
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/news-detail/ogrencilerimize-cay-ve-kek-ikrami-9-nisan-2026-persembe-saat-12-30-13-30/14976">
+                                            <span class="blink">
+                                                Yeni
+                                            </span>
+
+                                            &#214;ğrencilerimize &#199;ay ve Kek İkramı (9 Nisan 2026 Perşembe Saat:
+                                            12:30 - 13:30)
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/news-detail/kuzeydogu-anadolu-kariyer-fuari-kudakaf26-kayitlari-baslamistir/14974">
+                                        <span class="s-month">NİS</span>
+                                        <span class="s-date">6</span>
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/news-detail/kuzeydogu-anadolu-kariyer-fuari-kudakaf26-kayitlari-baslamistir/14974">
+                                            <span class="blink">
+                                                Yeni
+                                            </span>
+
+                                            Kuzeydoğu Anadolu Kariyer Fuarı (KUDAKAF’26) Kayıtları Başlamıştır.
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a href="/tr/news-detail/2025-2026-yili-bahar-do%CC%88nemi-ara-sinav-takvimi/14885">
+                                        <span class="s-month">MART</span>
+                                        <span class="s-date">16</span>
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/news-detail/2025-2026-yili-bahar-do%CC%88nemi-ara-sinav-takvimi/14885">
+                                            <span class="blink">
+                                                Yeni
+                                            </span>
+
+                                            2025-2026 Yılı Bahar Dönemi Ara Sınav Takvimi
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/news-detail/2025-2026-bahar-donemi-ders-programlarinda-yapilan-guncelleme-hakkinda/14873">
+                                        <span class="s-month">MART</span>
+                                        <span class="s-date">12</span>
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/news-detail/2025-2026-bahar-donemi-ders-programlarinda-yapilan-guncelleme-hakkinda/14873">
+                                            <span class="blink">
+                                                &#214;nemli
+                                            </span>
+
+                                            2025-2026 Bahar D&#246;nemi Ders Programlarında Yapılan G&#252;ncelleme
+                                            Hakkında
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widget-main">
+                        <div class="widget-main-title">
+                            <h4 class="widget-title">
+                                Etkinlikler
+                                <span class="pull-right" style="font-size: 10px;">
+                                    <a href="/tr/Activities/AllActivities" target="_self">T&#252;m Etkinlikler</a>
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="widget-inner" id="duyuru" style="min-height: 390px;">
+
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/Activities/Detail/2003?title=universitemiz-teknik-bilimler-myoda-tuketici-haftasi-kapsaminda-market-rafindan-sofraya-gida-okuryazarligi-ve-etiket-okuma-konferansi-duzenlendi">
+
+                                        <img src="/Files/Images/gida_1-27032026133957.jpeg" class="img-thumbnail"
+                                            style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a
+                                        href="/tr/Activities/Detail/2003?title=universitemiz-teknik-bilimler-myoda-tuketici-haftasi-kapsaminda-market-rafindan-sofraya-gida-okuryazarligi-ve-etiket-okuma-konferansi-duzenlendi">
+                                        <span style="background-color: #21416A;color: #fff;">27 MART</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/Activities/Detail/2003?title=universitemiz-teknik-bilimler-myoda-tuketici-haftasi-kapsaminda-market-rafindan-sofraya-gida-okuryazarligi-ve-etiket-okuma-konferansi-duzenlendi">
+
+                                            &#220;niversitemiz Teknik Bilimler MYO&#39;da T&#252;ketici Haftası
+                                            Kapsamında &quot;Market Rafında...
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/Activities/Detail/1988?title=teknik-bilimler-myoda-iftar-programi-duzenlendi">
+
+                                        <img src="/Files/Images/_rsm_1-14032026175736.jpeg" class="img-thumbnail"
+                                            style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a
+                                        href="/tr/Activities/Detail/1988?title=teknik-bilimler-myoda-iftar-programi-duzenlendi">
+                                        <span style="background-color: #21416A;color: #fff;">14 MART</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/Activities/Detail/1988?title=teknik-bilimler-myoda-iftar-programi-duzenlendi">
+
+                                            Teknik Bilimler MYO’da İftar Programı D&#252;zenlendi
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/Activities/Detail/1944?title=dr-ogr-uyesi-emine-ozene-hayirli-olsun-ziyareti">
+
+                                        <img src="/Files/Images/_ziyaret-23022026150348.jpeg" class="img-thumbnail"
+                                            style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a
+                                        href="/tr/Activities/Detail/1944?title=dr-ogr-uyesi-emine-ozene-hayirli-olsun-ziyareti">
+                                        <span style="background-color: #21416A;color: #fff;">23 ŞUB</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/Activities/Detail/1944?title=dr-ogr-uyesi-emine-ozene-hayirli-olsun-ziyareti">
+
+                                            Dr. &#214;ğr. &#220;yesi Emine &#214;zen’e Hayırlı Olsun Ziyareti
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/Activities/Detail/1860?title=ascilik-programi-ogrencilerine-uygulamali-kruvasan-egitimi-verildi">
+
+                                        <img src="/Files/Images/r-1-10122025123852.jpeg" class="img-thumbnail"
+                                            style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a
+                                        href="/tr/Activities/Detail/1860?title=ascilik-programi-ogrencilerine-uygulamali-kruvasan-egitimi-verildi">
+                                        <span style="background-color: #21416A;color: #fff;">10 ARA</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/Activities/Detail/1860?title=ascilik-programi-ogrencilerine-uygulamali-kruvasan-egitimi-verildi">
+
+                                            Aş&#231;ılık Programı &#214;ğrencilerine Uygulamalı Kruvasan Eğitimi Verildi
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widget-main">
+                        <div class="widget-main-title">
+                            <h4 class="widget-title">
+                                G&#252;ncel Haberler
+                                <span class="pull-right" style="font-size: 10px;">
+                                    <a href="/tr/BreakingNews/AllActivities" target="_self">T&#252;m Haberler</a>
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="widget-inner" id="duyuru" style="min-height: 390px;">
+
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/1429?title=teknik-bilimler-myoda-akademik-degerlendirme-ve-gelecek-hedefleri-toplantisi-gerceklestirildi">
+
+                                        <img src="/Files/Images/_727fdf2c-2785-46c2-8cd3-5...-14032026181122.jpeg"
+                                            class="img-thumbnail" style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/1429?title=teknik-bilimler-myoda-akademik-degerlendirme-ve-gelecek-hedefleri-toplantisi-gerceklestirildi">
+                                        <span style="background-color: #21416A;color: #fff;">14 MART</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/BreakingNews/Detail/1429?title=teknik-bilimler-myoda-akademik-degerlendirme-ve-gelecek-hedefleri-toplantisi-gerceklestirildi">
+
+                                            Teknik Bilimler MYO’da Akademik Değerlendirme ve Gelecek Hedefleri
+                                            Toplantısı Ge...
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a href="/tr/BreakingNews/Detail/1428?title=akademik-basari-gururumuz-oldu">
+
+                                        <img src="/Files/Images/ak_1-14032026180807.png" class="img-thumbnail"
+                                            style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a href="/tr/BreakingNews/Detail/1428?title=akademik-basari-gururumuz-oldu">
+                                        <span style="background-color: #21416A;color: #fff;">14 MART</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a href="/tr/BreakingNews/Detail/1428?title=akademik-basari-gururumuz-oldu">
+
+                                            Akademik Başarı Gururumuz Oldu
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/1426?title=egitim-is-birligi-protokolu-kapsaminda-ardahan-ticaret-ve-sanayi-odasi-ziyareti-yapildi">
+
+                                        <img src="/Files/Images/_foto_1-14032026175301.jpeg" class="img-thumbnail"
+                                            style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/1426?title=egitim-is-birligi-protokolu-kapsaminda-ardahan-ticaret-ve-sanayi-odasi-ziyareti-yapildi">
+                                        <span style="background-color: #21416A;color: #fff;">14 MART</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/BreakingNews/Detail/1426?title=egitim-is-birligi-protokolu-kapsaminda-ardahan-ticaret-ve-sanayi-odasi-ziyareti-yapildi">
+
+                                            Eğitim İş Birliği Protokol&#252; Kapsamında Ardahan Ticaret ve Sanayi Odası
+                                            Ziyareti ...
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/1400?title=teknik-bilimler-meslek-yuksekokulunda-2026-bahar-donemi-akademik-acilis-toplantisi-yapildi">
+
+                                        <img src="/Files/Images/_aa_4-18022026151538.jpeg" class="img-thumbnail"
+                                            style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/1400?title=teknik-bilimler-meslek-yuksekokulunda-2026-bahar-donemi-akademik-acilis-toplantisi-yapildi">
+                                        <span style="background-color: #21416A;color: #fff;">18 ŞUB</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/BreakingNews/Detail/1400?title=teknik-bilimler-meslek-yuksekokulunda-2026-bahar-donemi-akademik-acilis-toplantisi-yapildi">
+
+                                            Teknik Bilimler Meslek Y&#252;ksekokulu’nda 2026 Bahar D&#246;nemi Akademik
+                                            A&#231;ılış Toplant...
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/296?title=2025-2026-akademik-yili-acilis-toplantisi-gerceklestirildi">
+
+                                        <img src="/Files/Images/_whatsapp-image-2025-09-24...-24092025210852.jpeg"
+                                            class="img-thumbnail" style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/296?title=2025-2026-akademik-yili-acilis-toplantisi-gerceklestirildi">
+                                        <span style="background-color: #21416A;color: #fff;">24 EYL</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/BreakingNews/Detail/296?title=2025-2026-akademik-yili-acilis-toplantisi-gerceklestirildi">
+
+                                            2025-2026 Akademik Yılı A&#231;ılış Toplantısı Ger&#231;ekleştirildi
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <div class="event-small-list clearfix">
+                                <div class="calendar-small">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/295?title=%E2%80%8Bardahan-universitesinde-erasmus-heyecani">
+
+                                        <img src="/Files/Images/_whatsapp-image-2025-09-24...-24092025210119.jpeg"
+                                            class="img-thumbnail" style="width:65px;height:65px">
+                                    </a>
+                                </div>
+                                <div class="event-small-details">
+                                    <a
+                                        href="/tr/BreakingNews/Detail/295?title=%E2%80%8Bardahan-universitesinde-erasmus-heyecani">
+                                        <span style="background-color: #21416A;color: #fff;">24 EYL</span>
+                                    </a>
+                                    <h5 class="event-small-title">
+                                        <a
+                                            href="/tr/BreakingNews/Detail/295?title=%E2%80%8Bardahan-universitesinde-erasmus-heyecani">
+
+                                            ​Ardahan &#220;niversitesi’nde Erasmus+ Heyecanı
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                    <div class="widget-main" style="min-height: 352px;">
+                        <div class="widget-inner" style="min-height:350px; padding:0;overflow:hidden;">
+
+                            <div class="row" style="background-color:#FFF">
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank"
+                                            href="/Files/ckFiles/tby-ardahan-edu-tr/akademik_takvim/ders_programları/2025-2026-bahard-d&#246;nemi-ders-programları.pdf">
+                                            <img alt="Ders Programları" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/takvim_2-7022026220043.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank"
+                                                href="/Files/ckFiles/tby-ardahan-edu-tr/akademik_takvim/ders_programları/2025-2026-bahard-d&#246;nemi-ders-programları.pdf">
+                                                <h6 class="gallery-title">Ders Programları</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank" href="https://ubys.ardahan.edu.tr/">
+                                            <img alt="&#214;ğrenci Bilgi Sistemi" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/ogrenci-7022026214054.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank" href="https://ubys.ardahan.edu.tr/">
+                                                <h6 class="gallery-title">&#214;ğrenci Bilgi Sistemi</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank" href="https://tby.ardahan.edu.tr/tr/page/formlar/15245">
+                                            <img alt="Form ve Dilek&#231;eler" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/formlar-7022026214111.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank" href="https://tby.ardahan.edu.tr/tr/page/formlar/15245">
+                                                <h6 class="gallery-title">Form ve Dilek&#231;eler</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank" href="/tr/page/staj-islemleri/15250">
+                                            <img alt="Staj İşlemleri" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/staj-7022026215718.jpg" data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank" href="/tr/page/staj-islemleri/15250">
+                                                <h6 class="gallery-title">Staj İşlemleri</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank" href="http://erasmus.ardahan.edu.tr/">
+                                            <img alt="Erasmus+" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/farabi_2-7022026214136.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank" href="http://erasmus.ardahan.edu.tr/">
+                                                <h6 class="gallery-title">Erasmus+</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank" href="http://farabi.ardahan.edu.tr/">
+                                            <img alt="Farabi" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/erasmus_2-7022026214148.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank" href="http://farabi.ardahan.edu.tr/">
+                                                <h6 class="gallery-title">Farabi</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank">
+                                            <img alt="Faaliyetlerimiz" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/faaliyetlerimiz_2-6022026222118.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank">
+                                                <h6 class="gallery-title">Faaliyetlerimiz</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank">
+                                            <img alt="Bilimsel Araştırmalar" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/arastirmalar_2-6022026222150.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank">
+                                                <h6 class="gallery-title">Bilimsel Araştırmalar</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank" href="https://sektorkampuste.sanayi.gov.tr/tr/">
+                                            <img alt="Sekt&#246;r Kamp&#252;ste" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/sektor_kampus_2-6022026222218.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank" href="https://sektorkampuste.sanayi.gov.tr/tr/">
+                                                <h6 class="gallery-title">Sekt&#246;r Kamp&#252;ste</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank" href="https://yetenekkapisi.gov.tr/">
+                                            <img alt="Yetenek Kapısı" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/duyuru-6022026222227.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank" href="https://yetenekkapisi.gov.tr/">
+                                                <h6 class="gallery-title">Yetenek Kapısı</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank"
+                                            href="https://ubys.ardahan.edu.tr/GTS/Portal/Home/Index#section3000901">
+                                            <img alt="Mezun Bilgi Sistemi" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/mezun_bilg_sistemi_2-6022026222237.jpg"
+                                                data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank"
+                                                href="https://ubys.ardahan.edu.tr/GTS/Portal/Home/Index#section3000901">
+                                                <h6 class="gallery-title">Mezun Bilgi Sistemi</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2 text-center" style="">
+
+                                    <div class="thumbnail" style="padding-top: 10px; min-width: 100%;height:175px;">
+                                        <a target="_blank" href="https://kvkk.ardahan.edu.tr/">
+                                            <img alt="KVKK" class="img-responsive img-rounded"
+                                                style="width: 150px; height:150px; "
+                                                src="/Files/Images/kvkk-6022026222246.jpg" data-holder-rendered="true">
+                                        </a>
+                                        <div style="margin: 10px 15px; padding: 12px 0px !important;"
+                                            class="gallery-content">
+                                            <a target="_blank" href="https://kvkk.ardahan.edu.tr/">
+                                                <h6 class="gallery-title">KVKK</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="right-wrapper" id="rightSidebar">
+            <div class="sidebar-content" role="region" aria-label="Sosyal medya ve dil seçimi">
+                <div class="translate-box" aria-label="Dil seçimi">
+                    <div id="google_translate_element"></div>
+                </div>
+
+                <div class="social-icons" aria-label="Sosyal medya ikonları">
+                    <a href="https://www.instagram.com/ardahanuniresmi" class="social-icon instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/ardahanuniresmi" target="_blank" class="social-icon facebook"> <i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/ardahanuniresmi" target="_blank" class="social-icon youtube"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/ardahanuniresmi" target="_blank" class="social-icon twitter"><i
+                            class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="toggle-arrow" id="toggleArrow" role="button" tabindex="0" aria-label="Sidebar aç/kapa"></div>
+        <script>
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                    {
+                        pageLanguage: 'tr',
+                        includedLanguages: 'ru,pl,ka,ar,en,de',
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                    },
+                    'google_translate_element'
+                );
+            }
+
+            const sidebar = document.getElementById('rightSidebar');
+            const toggleArrow = document.getElementById('toggleArrow');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('closed');
+            }
+
+            toggleArrow.addEventListener('click', toggleSidebar);
+
+            toggleArrow.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleSidebar();
+                }
+            });
+        </script>
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <style>
+            .right-wrapper {
+                position: fixed;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                z-index: 10000;
+                transition: transform 0.3s ease;
+                background: transparent;
+            }
+
+            .sidebar-content {
+                background: #222;
+                border-radius: 10px 0 0 10px;
+                box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.25);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 8px 10px;
+                min-width: 54px;
+            }
+
+            /* Google Translate kutusu */
+            .translate-box {
+                width: 100px;
+                overflow: hidden;
+            }
+
+            #google_translate_element select {
+                max-width: 100%;
+                width: 100% !important;
+                overflow: hidden !important;
+                white-space: nowrap !important;
+                font-size: 13px !important;
+                padding: 5px 8px !important;
+                box-sizing: border-box;
+                background: #222 !important;
+                color: white !important;
+                border: none !important;
+                border-radius: 7px !important;
+                cursor: pointer;
+                outline: none;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                transition: background 0.3s ease;
+            }
+
+            #google_translate_element select:hover {
+                background: #333 !important;
+            }
+
+            #google_translate_element>div {
+                transform: scale(0.85);
+                transform-origin: left center;
+                width: 120px;
+            }
+
+            .social-icons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                align-items: flex-end;
+                /* Sosyal ikonları sağa yasla */
+                margin-right: 10px;
+                /* Sağdan biraz boşluk bırak */
+            }
+
+            .social-icons a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 30px;
+                height: 30px;
+                color: #fff;
+                border-radius: 7px;
+                font-size: 18px;
+                background: #333;
+                text-decoration: none;
+                transition: all 0.25s ease;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+            }
+
+            .social-icons a:hover {
+                background: #555;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                transform: scale(1.15);
+            }
+
+            .social-icons .instagram {
+                background: #E1306C;
+            }
+
+            .social-icons .instagram:hover {
+                box-shadow: 0 0 10px #E1306C;
+            }
+
+            .social-icons .facebook {
+                background: #3b5998;
+            }
+
+            .social-icons .facebook:hover {
+                box-shadow: 0 0 10px #3b5998;
+            }
+
+            .social-icons .linkedin {
+                background: #0077b5;
+            }
+
+            .social-icons .linkedin:hover {
+                box-shadow: 0 0 10px #0077b5;
+            }
+
+            .social-icons .youtube {
+                background: #ff0000;
+            }
+
+            .social-icons .youtube:hover {
+                box-shadow: 0 0 10px #ff0000;
+            }
+
+            .social-icons .twitter {
+                background: #1DA1F2;
+            }
+
+            .social-icons .twitter:hover {
+                box-shadow: 0 0 10px #1DA1F2;
+            }
+
+            .toggle-arrow {
+                position: fixed;
+                top: 50%;
+                right: calc(54px + 10px);
+                transform: translateY(-50%);
+                width: 30px;
+                height: 48px;
+                background: #222;
+                border-radius: 10px 0 0 10px;
+                box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.25);
+                color: white;
+                font-size: 24px;
+                line-height: 48px;
+                text-align: center;
+                cursor: pointer;
+                user-select: none;
+                transition: right 0.3s ease, background 0.3s ease;
+                z-index: 10001;
+            }
+
+            .toggle-arrow:hover {
+                background: #444;
+                color: #ddd;
+            }
+
+            .right-wrapper.closed {
+                transform: translateX(100%) translateY(-50%);
+            }
+
+            .right-wrapper.closed+.toggle-arrow {
+                right: 0;
+            }
+
+            .right-wrapper.closed+.toggle-arrow::after {
+                content: "◀";
+            }
+
+            .toggle-arrow::after {
+                content: "▶";
+            }
+
+            @media (max-width: 768px) {
+                .right-wrapper {
+                    top: auto;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    transform: none !important;
+                    flex-direction: row;
+                    justify-content: center;
+                    gap: 12px;
+                    padding: 8px 0;
+                    background: #222;
+                    border-radius: 0;
+                    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.25);
+                    min-height: 48px;
+                }
+
+                .right-wrapper.closed {
+                    transform: translateY(100%);
+                    opacity: 0;
+                    pointer-events: none;
+                }
+
+                .sidebar-content {
+                    flex-direction: row;
+                    padding: 0 12px;
+                    box-shadow: none;
+                    border-radius: 0;
+                    min-width: auto;
+                    width: 100%;
+                    justify-content: center;
+                    gap: 12px;
+                }
+
+                .translate-box {
+                    max-width: 120px;
+                }
+
+                #google_translate_element select {
+                    min-width: 110px;
+                    font-size: 14px !important;
+                    padding: 6px 12px !important;
+                    width: auto;
+                    border-radius: 7px !important;
+                }
+
+                .social-icons {
+                    flex-direction: row;
+                    width: auto;
+                    gap: 10px;
+                    padding: 0;
+                    margin-right: 0;
+                }
+
+                .social-icons a {
+                    width: 28px;
+                    height: 28px;
+                    font-size: 14px;
+                }
+
+                .toggle-arrow {
+                    position: fixed;
+                    bottom: 54px;
+                    right: 10px;
+                    top: auto;
+                    width: 34px;
+                    height: 34px;
+                    line-height: 34px;
+                    font-size: 22px;
+                    border-radius: 8px;
+                    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+                    transition: right 0.3s ease, background 0.3s ease;
+                }
+
+                .right-wrapper.closed+.toggle-arrow {
+                    right: 10px;
+                }
+            }
+        </style>
+
+
+
+        <footer id="footer" class="site-footer">
+            <div class="container"
+                style="background-image: url(/_Resources/images/siluet.png); background-position: center; background-repeat: no-repeat;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="footer-widget-title">Hızlı Erişim</h4>
+
+                        <ul>
+
+                            <li><a href="https://www.ardahan.edu.tr" target="_blank">&#220;niversite Ana Sayfa</a></li>
+                            <li><a href="https://ubys.ardahan.edu.tr" target="_blank">&#220;niversite Bilgi Y&#246;netim
+                                    Sistemi</a></li>
+                            <li><a href="https://www.ardahan.edu.tr/Website/Contents.aspx?PageID=1663&amp;LangID=1"
+                                    target="_blank">Akademik Takvim</a></li>
+                            <li><a href="https://kayit.ardahan.edu.tr/" target="_blank">AR&#220; Wi-Fi</a></li>
+                            <li><a href="https://bidb.ardahan.edu.tr/tr/page/eduroam/9360" target="_blank">Eduroam</a>
+                            </li>
+                            <li><a href="https://bidb.ardahan.edu.tr/tr/page/yetkim-ve-edugain-nedir/9380"
+                                    target="_blank">Yetkim-EduGain</a></li>
+
+                        </ul>
+
+
+
+
+                    </div>
+                    <div class="col-md-3">
+                        <h4 class="footer-widget-title">Bağlantılar</h4>
+
+                        <ul>
+
+                            <li><a href="https://ulusalstajprogrami.iskur.gov.tr/" target="_blank">Ulusal Staj
+                                    Programı</a></li>
+                            <li><a href="https://yukle.al/" target="_blank">Kamp&#252;s Kart Para Y&#252;kleme</a></li>
+                            <li><a href="https://www.yok.gov.tr/tr" target="_blank">Y&#252;ksek &#214;ğretim Kurulu
+                                    (Y&#214;K)</a></li>
+                            <li><a href="https://kygm.gsb.gov.tr/" target="_blank">Kredi Yurtlar Kurumu (KYK)</a></li>
+                            <li><a href="https://www.osym.gov.tr/" target="_blank">&#214; S Y M</a></li>
+                            <li><a href="https://www.turkiye.gov.tr/" target="_blank">e - Devlet</a></li>
+
+                        </ul>
+
+
+
+
+                    </div>
+                    <div class="col-md-6 ">
+                        <h4 class="footer-widget-title">İletişim</h4>
+                        <p>Ardahan &#220;niversitesi Kamp&#252;s&#252;, &#199;amlı&#231;atak Mevkii, 75002,
+                            Merkez/Ardahan</p>
+                        <p>
+                            <strong>Telefon : </strong>
+                            0478 211 7575 Dahili: 5192<br />
+
+                            <strong>Faks : </strong>
+                            0478 211 7575 Dahili: 5238<br />
+
+                            <strong>E-Posta : </strong>
+                            tbmyo@ardahan.edu.tr
+
+                        </p>
+
+                        <ul class="footer-media-icons pull-right">
+                            <li>
+                                <a class="fa fa-facebook fa-2x" target="_blank"
+                                    href="https://www.facebook.com/ardahanuniresmi"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-twitter fa-2x" target="_blank" href="https://x.com/ardahanuniresmi"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-linkedin fa-2x" target="_blank" href="https://www.linkedin.com/"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-instagram fa-2x" target="_blank"
+                                    href="https://www.instagram.com/ardahanuniresmi"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-youtube fa-2x" target="_blank"
+                                    href="https://www.youtube.com/ardahanuniresmi"></a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <div class="bottom-footer">
+                    <p class="small-text">© <span id="year"></span> Bilgi İşlem Daire Başkanlığı</p>
+                    <!--	<p class="small-text">© <%= datetime. %> Bilgi İşlem Daire Başkanlığı</p> -->
+
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript">
+
+            document.getElementById("year").textContent = new Date().getFullYear();
+
+            $(document).ready(function () {
+                //$('body').css('margin-bottom', Math.ceil($('.site-footer').height() + 66) + 'px');
+
+                $("#search-link").click(function (e) {
+                    e.preventDefault();
+                    $("#search-container").slideToggle();
+                });
+
+
+
+
+            });
+
+
+
+            function changeLang(shortTitle) {
+
+                var url = window.location.href;
+                if (url.indexOf("/tr/") == -1) {
+                    window.location.href = "/" + shortTitle;
+                } else {
+                    var newUrl = url.replace("/tr/", "/" + shortTitle + "/");
+                    window.location.href = newUrl;
+                }
+            }
+
+            function OpenPopUp(url, width, height) {
+
+                $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'none',
+                    'transitionOut': 'none',
+                    'type': 'iframe',
+                    'href': url,
+                    success: function (dd) {
+                        parent.$.fancybox.close();
+
+                    }
+                });
+
+            }
+
+        </script>
+        <script src="/_Resources/js/custom.js"></script>
+        <script src="/_Resources/js/plugins.js"></script>
+
+
+
+
+
+        <link href="/_Resources/js/jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
+        <script src="/_Resources/js/jquery.bxslider/jquery.bxslider.min.js"></script>
+
+        <style type="text/css">
+
+
+
+        </style>
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('#bxslider').bxSlider({
+                    auto: true,
+                    autoControls: false,
+                    pager: false
+                });
+            });
+
+        </script>
+
+
+
+        <!-- chatbot -->
+        <script src="https://app.livechatai.com/embed.js" data-id="cmk4hyv1x0011ij04tbe52i0x" async defer>
+        </script>
+
+
+
+
+
+
+
+
+
+
+        <!--	whatsapp kütüphane.ardahan.edu.tr için sadece -->
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+        <a id="ozelLink" href="https://wa.me/904782117516" target="_blank" style="position: fixed; 
+          bottom: 20px; 
+          right: 70px; 
+          background-color: #25d366; 
+          color: white; 
+          text-decoration: none; 
+          padding: 12px 25px; 
+          border-radius: 50px; 
+          display: flex; 
+          align-items: center; 
+          justify-content: center;
+          gap: 12px; 
+          box-shadow: 0px 4px 15px rgba(0,0,0,0.2); 
+          font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+          font-weight: 600; 
+          font-size: 16px; 
+          z-index: 9999;
+		  display:none;
+          transition: all 0.3s ease;">
+
+            <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
+
+            <span>WhatsApp Destek Hattı</span>
+        </a>
+
+        <script>
+            // whatsup sadece kutuphane için
+            var mevcutAdres = window.location.href;
+
+            if (mevcutAdres.indexOf("kutuphane.ardahan.edu.tr") !== -1) {
+                var buton = document.getElementById("ozelLink");
+                if (buton) {
+                    buton.style.setProperty('display', 'flex', 'important');
+                }
+            }
+
+        </script>
+
+        <!--	whatsapp kütüphane.ardahan.edu.tr için sadece -->
+
+
+
+
+
+
+
+
+</body>
+
+</html>
