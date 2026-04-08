@@ -73,6 +73,11 @@ Katkıda bulunmak istiyorsanız lütfen şu adımları izleyin:
 4. Dalınızı push edin: `git push origin ozellik-adi`
 5. Bir Pull Request açın.
 
+## Katkıda Bulunanlar
+
+- ...
+- ...
+
 ## Lisans
 
 Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır.
