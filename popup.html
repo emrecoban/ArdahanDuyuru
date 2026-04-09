@@ -1,34 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARÜ'den Duyurular</title>
-    <link rel="stylesheet" href="styles.css" />
+<html lang="tr">
 
-    <link rel="icon" href="logo-1.png" type="image/png">
-  </head>
-  <body>
-    <table>
-     <tr> 
-      <td>
-        <img class="logo" src="/logo-1.png" alt="logo" >
-   </td>
-      <td>
-        <h1 class="duy">ARÜ'den Duyurular</h1>
-    </td>
-    
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="megaphone" src="/megaphone.png" alt="megaphone"  /></td>
-  </tr>
-  </table>
-  <hr class="hr">
-  <p class="Tduy">Tüm Duyurular</p>
-      
-    <ul id="link-list">
-      Yükleniyor...
-    </ul>
-    <script src="popup.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>ARÜ Takip Eklentisi</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="header">
+    <img src="https://www.ardahan.edu.tr/Images/Uploads/Logos/logo-1.png" alt="ARÜ Logo" class="header-logo">
+    <div class="header-text">
+      <h1>Ardahan Üniversitesi</h1>
+      <p>Gelişmiş Takip Sistemi</p>
+    </div>
+    <div class="info-btn" id="info-btn" title="Hakkında">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-target="duyurular-tab">Duyurular</div>
+    <div class="tab" data-target="menu-tab">Yemek Menüsü</div>
+  </div>
+
+  <div class="content-container">
+    <!-- Duyurular Sekmesi -->
+    <div id="duyurular-tab" class="content active">
+      <div class="filters">
+        <button class="filter-btn active" data-url="https://www.ardahan.edu.tr/">Genel</button>
+        <button class="filter-btn" data-url="https://tby.ardahan.edu.tr/tr/news">Teknik Bilimler</button>
+      </div>
+      <div id="duyurular-list">
+        <div class="loading">Duyurular yükleniyor...</div>
+      </div>
+    </div>
+
+    <!-- Yemek Menüsü Sekmesi -->
+    <div id="menu-tab" class="content">
+      <div id="menu-list">
+        <div class="loading">Yemek menüsü yükleniyor...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hakkında Modal -->
+  <div class="modal-overlay" id="about-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Hakkında</h2>
+        <button class="close-btn" id="close-modal">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bu proje, aşağıdaki geliştiriciler tarafından hazırlanmıştır:</p>
+        <ul class="developer-list">
+          <li><a href="https://mahmutsaskn.com.tr" target="_blank">Mahmut Şaşkın</a></li>
+          <li><a href="https://ornek.site2.com" target="_blank">Geliştirici 2 - Web Sitesi</a></li>
+          <li><a href="https://ornek.site2.com" target="_blank">Geliştirici 2 - Web Sitesi</a></li>
+          <li><a href="https://ornek.site2.com" target="_blank">Geliştirici 2 - Web Sitesi</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
 </html>
-
-

@@ -1,18 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Ardahan Üniversitesi Duyuru Linkleri",
-  "version": "1.1",
-  "description": "Belirtilen sayfadaki duyuru linklerini listeleyen bir Chrome extension.",
-  "permissions": ["scripting"],
+  "name": "ARÜ Duyuru ve Menü",
+  "version": "1.0.0",
+  "description": "Ardahan Üniversitesi (ARÜ) güncel duyurularını ve yemek menüsünü takip eder.",
   "action": {
     "default_popup": "popup.html",
-    "default_icon": {
-      "16": "icon-16.png",
-      "48": "icon-48.png",
-      "128": "icon-128.png"
-    }
-
-    
+    "default_title": "Ardahan Üniversitesi"
   },
-  "host_permissions": ["https://ardahan.edu.tr/*"]
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "host_permissions": [
+    "*://*.ardahan.edu.tr/*"
+  ]
 }
