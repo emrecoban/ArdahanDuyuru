@@ -1,313 +1,356 @@
-let currentDuyuruUrl = "https://www.ardahan.edu.tr/";
+// ─── Önbellek: her filtre için ayrı ayrı çekilen duyurular buraya kaydedilir ───
+const announcementCache = {};
 
+// ─── Filtre kaynakları: hangi filtre hangi sayfadan çekilir ───────────────────
+//     parser: 'ardahan_main'  →  ana ardahan.edu.tr formatı
+//     parser: 'ibef'          →  fakülte sitesi formatı (ul > li > a + .event-date)
+// URL'ler: https://www.ardahan.edu.tr/ navigasyon menüsünden alındı.
+const FILTER_SOURCES = {
+    // Ana sayfa — Tüm Üniversite Duyuruları
+    'all'               : { url: 'https://www.ardahan.edu.tr/',             parser: 'ardahan_main', base: 'https://www.ardahan.edu.tr'     },
+
+    // ─ Fakülteler ─
+    'insani'            : { url: 'https://ibef.ardahan.edu.tr/tr/news',     parser: 'ibef', base: 'https://ibef.ardahan.edu.tr'     },
+    'müh'               : { url: 'https://muhf.ardahan.edu.tr/tr/news',     parser: 'ibef', base: 'https://muhf.ardahan.edu.tr'     },
+    'iktisadi'          : { url: 'https://iibf.ardahan.edu.tr/tr/news',     parser: 'ibef', base: 'https://iibf.ardahan.edu.tr'     },
+    'ilahiyat'          : { url: 'https://ilf.ardahan.edu.tr/tr/news',      parser: 'ibef', base: 'https://ilf.ardahan.edu.tr'      },
+    'sağlık'            : { url: 'https://sbf.ardahan.edu.tr/tr/news',      parser: 'ibef', base: 'https://sbf.ardahan.edu.tr'      },
+    'güzel sanatlar'    : { url: 'https://gsf.ardahan.edu.tr/tr/news',      parser: 'ibef', base: 'https://gsf.ardahan.edu.tr'      },
+    'spor'              : { url: 'https://sporbf.ardahan.edu.tr/tr/news',   parser: 'ibef', base: 'https://sporbf.ardahan.edu.tr'   },
+
+    // ─ Meslek Yüksekokulu ─
+    'teknik bilimler'   : { url: 'https://tby.ardahan.edu.tr/tr/news',      parser: 'ibef', base: 'https://tby.ardahan.edu.tr'      },
+    'göle'              : { url: 'https://gole.ardahan.edu.tr/tr/news',      parser: 'ibef', base: 'https://gole.ardahan.edu.tr'     },
+    'posof'             : { url: 'https://posof.ardahan.edu.tr/tr/news',    parser: 'ibef', base: 'https://posof.ardahan.edu.tr'    },
+    'çıldır'            : { url: 'https://cildir.ardahan.edu.tr/tr/news',   parser: 'ibef', base: 'https://cildir.ardahan.edu.tr'   },
+    'sağlık hizmetleri' : { url: 'https://shy.ardahan.edu.tr/tr/news',      parser: 'ibef', base: 'https://shy.ardahan.edu.tr'      },
+    'sosyal bilimler'   : { url: 'https://sby.ardahan.edu.tr/tr/news',      parser: 'ibef', base: 'https://sby.ardahan.edu.tr'      },
+
+    // ─ Yüksekokul ─
+    'besyo'             : { url: 'https://besyo.ardahan.edu.tr/tr/news',    parser: 'ibef', base: 'https://besyo.ardahan.edu.tr'    },
+    'turizm'            : { url: 'https://tioy.ardahan.edu.tr/tr/news',     parser: 'ibef', base: 'https://tioy.ardahan.edu.tr'     },
+};
+
+// ─── Sayfa Yüklendiğinde ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  // Sekme (Tab) Sistemi
-  const tabs = document.querySelectorAll('.tab');
-  const contents = document.querySelectorAll('.content');
+    // Sekme (Tab) sistemi
+    const tabs     = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
-
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.target).classList.add('active');
-    });
-  });
-
-  // Kullanıcı popup'ı açtığı için bildirim Badge'ini sıfırlıyoruz.
-  chrome.action.setBadgeText({ text: "" });
-  chrome.storage.local.set({ unreadCount: 0 });
-
-  // Eklenti açıldığında state durumuna göre URL yükleme yapılabilir, şimdilik varsayılan adresi kullanıyoruz
-  loadAnnouncements();
-  loadMenu();
-
-  // Filtre (Duyuru Kaynağı) Sistemi
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('active')) return;
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentDuyuruUrl = btn.dataset.url;
-      loadAnnouncements();
-    });
-  });
-
-  // Hakkında (Info) Modal Sistemi
-  const infoBtn = document.getElementById('info-btn');
-  const modalOverlay = document.getElementById('about-modal');
-  const closeModal = document.getElementById('close-modal');
-
-  if (infoBtn && modalOverlay && closeModal) {
-    infoBtn.addEventListener('click', () => {
-      modalOverlay.classList.add('active');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t     => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.target).classList.add('active');
+        });
     });
 
-    closeModal.addEventListener('click', () => {
-      modalOverlay.classList.remove('active');
+    // Bildirim badge'ini sıfırla
+    chrome.action.setBadgeText({ text: '' });
+    chrome.storage.local.set({ unreadCount: 0 });
+
+    // İlk yükleme
+    loadAnnouncementsForFilter('all');
+    loadMenu();
+
+    // ─── Özel Filtre Seçimi ────────────────────────────────────────
+    const filterToggle  = document.getElementById('filter-toggle');
+    const filterModal   = document.getElementById('filter-modal');
+    const filterChevron = document.getElementById('filter-chevron');
+    const filterLabel   = document.getElementById('filter-active-label');
+
+    // Toggle: aynı butona basınca aç/kapat
+    if (filterToggle && filterModal) {
+        filterToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = filterModal.classList.toggle('open');
+            filterChevron.classList.toggle('open', isOpen);
+        });
+    }
+
+    // Seçenek tıklandığında
+    document.querySelectorAll('.filter-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+            const value = opt.dataset.value;
+            const label = opt.dataset.label;
+
+            // Aktif class güncelle
+            document.querySelectorAll('.filter-option').forEach(o => o.classList.remove('active'));
+            opt.classList.add('active');
+
+            // Buton etiketi güncelle
+            filterLabel.textContent = label;
+
+            // Modalı kapat
+            filterModal.classList.remove('open');
+            filterChevron.classList.remove('open');
+
+            // Duyuruları yükle
+            loadAnnouncementsForFilter(value);
+        });
     });
 
-    // Modal dışına tıklandığında da kapansın
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) {
-        modalOverlay.classList.remove('active');
-      }
-    });
-  }
+    // Overlay arka planına tıklayınca kapat
+    if (filterModal) {
+        filterModal.addEventListener('click', (e) => {
+            if (e.target === filterModal) {
+                filterModal.classList.remove('open');
+                filterChevron.classList.remove('open');
+            }
+        });
+    }
+
+    // ─── Modal İşlemleri ─────────────────────────────────────────────
+    const devInfoBtn = document.getElementById('dev-info-btn');
+    const devModal = document.getElementById('dev-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+
+    if (devInfoBtn && devModal && closeModalBtn) {
+        devInfoBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            devModal.classList.add('open');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            devModal.classList.remove('open');
+        });
+
+        devModal.addEventListener('click', (e) => {
+            if (e.target === devModal) {
+                devModal.classList.remove('open');
+            }
+        });
+    }
 });
 
-async function loadAnnouncements() {
-  const listDiv = document.getElementById('duyurular-list');
-  try {
-    const res = await fetch(currentDuyuruUrl);
-    const html = await res.text();
+// ─── Filtre bazlı duyuru yükleyici ───────────────────────────────────────────
+async function loadAnnouncementsForFilter(filterValue) {
+    const listDiv = document.getElementById('duyurular-list');
 
-    // Gelen kaynak kodu parse edilebilir HTML nesnesine dönüştürüyoruz
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-
-    // Sitedeki güncel duyuru divlerini seçiyoruz
-    let duyuruElements = doc.querySelectorAll('.duyuru .all');
-    let isMainSiteTemplate = true;
-    let isAllNewsTemplate = false;
-
-    if (duyuruElements.length === 0) {
-      // "Tüm Duyurular" sayfası kontrolü (örn. /tr/news)
-      duyuruElements = doc.querySelectorAll('.blog-post-inner ul li');
-      if (duyuruElements.length > 0) {
-        isAllNewsTemplate = true;
-        isMainSiteTemplate = false;
-      } else {
-        // Alt domain özel teması (.event-small-list)
-        const widgetTitles = doc.querySelectorAll('.widget-title, .widget-main-title h4');
-        let duyuruContainer = null;
-        for (let t of widgetTitles) {
-          if (t.textContent.includes("Duyurular")) {
-            const parent = t.closest('.widget-main');
-            if (parent) {
-              duyuruContainer = parent.querySelector('.widget-inner');
-              break;
-            }
-          }
-        }
-        if (duyuruContainer) {
-          duyuruElements = duyuruContainer.querySelectorAll('.event-small-list');
-        } else {
-          duyuruElements = doc.querySelectorAll('.event-small-list');
-        }
-        isMainSiteTemplate = false;
-      }
+    // Önbellekte varsa direkt göster (yeniden fetch yok)
+    if (announcementCache[filterValue]) {
+        renderAnnouncements(announcementCache[filterValue]);
+        return;
     }
 
-    listDiv.innerHTML = "";
-    let currentLinks = [];
+    // Kaynak yoksa 'all' kaynağını kullan
+    const source = FILTER_SOURCES[filterValue] || FILTER_SOURCES['all'];
 
-    duyuruElements.forEach(el => {
-      let href, title, dateText;
+    listDiv.innerHTML = '<div class="loading">Duyurular yükleniyor...</div>';
 
-      if (isMainSiteTemplate) {
-        const aTag = el.querySelector('a');
-        if (!aTag) return;
-        href = aTag.getAttribute('href');
-        const titleSpan = aTag.querySelector('span');
-        title = titleSpan ? titleSpan.textContent.trim() : "Başlıksız Duyuru";
-        const dayEl = aTag.querySelector('.tarih b');
-        const monthEl = aTag.querySelector('.tarih div');
-        dateText = (dayEl && monthEl) ? `${dayEl.textContent} ${monthEl.textContent}` : "";
-      } else if (isAllNewsTemplate) {
-        const aTag = el.querySelector('a');
-        if (!aTag) return;
-        href = aTag.getAttribute('href');
+    try {
+        const res  = await fetch(source.url);
+        const html = await res.text();
+        const parser = new DOMParser();
+        const doc  = parser.parseFromString(html, 'text/html');
 
-        const titleClone = aTag.cloneNode(true);
-        const spans = titleClone.querySelectorAll('span');
-        spans.forEach(s => s.remove());
-        title = titleClone.textContent.replace(/\s+/g, ' ').trim();
+        // Uygun parse fonksiyonunu seç
+        const items = source.parser === 'ibef'
+            ? parseIbef(doc, source.base)
+            : parseArdahanMain(doc, source.url);
 
-        const dateSpan = el.querySelector('.event-date');
-        if (dateSpan) {
-          dateText = dateSpan.textContent.replace('-', '').trim();
-        } else {
-          dateText = "";
-        }
-      } else {
-        const titleAnchor = el.querySelector('.event-small-title a');
-        if (!titleAnchor) return;
-        href = titleAnchor.getAttribute('href');
+        // Önbelleğe al
+        announcementCache[filterValue] = items;
 
-        const titleClone = titleAnchor.cloneNode(true);
-        const spans = titleClone.querySelectorAll('span');
-        spans.forEach(s => s.remove());
-        title = titleClone.textContent.replace(/\s+/g, ' ').trim();
-
-        const dayEl = el.querySelector('.calendar-small .s-date');
-        const monthEl = el.querySelector('.calendar-small .s-month');
-        dateText = (dayEl && monthEl) ? `${dayEl.textContent} ${monthEl.textContent}` : "";
-      }
-
-      let baseUrl = new URL(currentDuyuruUrl).origin;
-      // Linkler göreceli ise başına ilgili sitenin adresini ekliyoruz
-      if (!href.startsWith('http')) {
-        href = href.startsWith('/') ? baseUrl + href : baseUrl + "/" + href;
-      }
-      currentLinks.push(href);
-
-      const item = document.createElement('a');
-      item.href = href;
-      item.target = "_blank"; // Tıklanınca yeni sekmede açılır
-      item.className = "list-item";
-      item.innerHTML = `
-                <div class="item-header" style="display:flex; justify-content:space-between; align-items:flex-start;">
-                    <div class="item-left" style="flex:1; padding-right:10px;">
-                        <div class="item-date">
-                            <span class="item-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                            </span>
-                            ${dateText}
-                        </div>
-                        <div class="item-title">${title}</div>
-                    </div>
-                </div>
-            `;
-
-      // Artı İkonu
-      const expandBtn = document.createElement('div');
-      expandBtn.className = "expand-btn";
-      expandBtn.title = "Kısa açıklamayı gör";
-      expandBtn.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            `;
-      item.querySelector('.item-header').appendChild(expandBtn);
-
-      // Açıklama Alanı
-      const descDiv = document.createElement('div');
-      descDiv.className = "item-desc";
-      item.appendChild(descDiv);
-
-      expandBtn.addEventListener('click', async (e) => {
-        e.preventDefault(); // Linkin açılmasını ve sayfaya yönlendirmeyi engeller
-        e.stopPropagation();
-
-        if (descDiv.classList.contains('active')) {
-          descDiv.classList.remove('active');
-          expandBtn.style.transform = "rotate(0deg)";
-          return;
+        // Ana sayfa verisiyse arka plan bildirim kontrolü için kaydet
+        if (filterValue === 'all') {
+            chrome.storage.local.set({ seenAnnouncements: items.map(i => i.href) });
         }
 
-        expandBtn.style.transform = "rotate(45deg)";
-        descDiv.classList.add('active');
+        renderAnnouncements(items);
 
-        if (descDiv.innerHTML === "") { // Sadece ilk tıklandığında veri çekmek için yükle
-          descDiv.innerHTML = '<div class="desc-loading">Açıklama yükleniyor...</div>';
-          try {
-            const dlRes = await fetch(href);
-            const dlHtml = await dlRes.text();
-            const dlParser = new DOMParser();
-            const dlDoc = dlParser.parseFromString(dlHtml, "text/html");
-
-            let detailText = "";
-            const contentEl = dlDoc.getElementById('ContentPlaceHolder1_Lbl_ViewTypeNormalText');
-            if (contentEl) {
-              detailText = contentEl.textContent.trim();
-            } else {
-              const innerEl = dlDoc.querySelector('.blog-post-inner, .page-content, article');
-              if (innerEl) detailText = innerEl.textContent.trim();
-            }
-
-            detailText = detailText.replace(/\s+/g, ' ').trim();
-            if (detailText.length > 200) {
-              detailText = detailText.substring(0, 200) + "...";
-            }
-
-            descDiv.innerHTML = detailText || "Bu duyuru için açıklama metni bulunamadı.";
-          } catch (err) {
-            descDiv.innerHTML = "Açıklama alınırken bağlantı hatası oluştu.";
-          }
-        }
-      });
-
-      listDiv.appendChild(item);
-    });
-
-    // Son görülen duyuruları kaydedelim ki arka plan (background) tekrar bildirim atmasın
-    // Sadece mevcuttakileri değil, eski kayıtlarla birleştirerek kaydediyoruz.
-    chrome.storage.local.get(["seenAnnouncements"], (data) => {
-      let seen = data.seenAnnouncements || [];
-      currentLinks.forEach(link => {
-        if (!seen.includes(link)) {
-          seen.push(link);
-        }
-      });
-
-      // Çok fazla element birikmesin, belleği yormayalım
-      if (seen.length > 200) {
-        seen = seen.slice(-100);
-      }
-
-      chrome.storage.local.set({
-        seenAnnouncements: seen,
-        unreadCount: 0 // Bildirim sayısını sıfırla
-      });
-
-      // Rozeti temizle
-      if (chrome.action) {
-        chrome.action.setBadgeText({ text: "" });
-      }
-    });
-
-    if (duyuruElements.length === 0) {
-      listDiv.innerHTML = "<div class='error'>Duyuru bulunamadı. Lütfen daha sonra tekrar deneyin.</div>";
+    } catch (e) {
+        listDiv.innerHTML = "<div class='error'>Duyurular yüklenirken hata oluştu. Ağ bağlantınızı kontrol edin.</div>";
     }
-  } catch (e) {
-    listDiv.innerHTML = "<div class='error'>Duyurular yüklenirken hata oluştu. Ağ bağlantınızı kontrol edin.</div>";
-  }
 }
 
-async function loadMenu() {
-  const menuDiv = document.getElementById('menu-list');
-  try {
-    // ARÜ SKS Daire Başkanlığı Yemek Menüsü sayfası
-    const res = await fetch("https://sksdb.ardahan.edu.tr/tr/page/aylik-yemek-menusu/9265");
-    const html = await res.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
+// ─── Parser: ardahan.edu.tr ana sayfa formatı (.duyuru .all) ─────────────────
+function parseArdahanMain(doc, baseUrl) {
+    const items  = [];
+    const origin = new URL(baseUrl).origin;
 
-    // Sitede paylaşılan PDF dosyası linklerini buluyoruz
-    const links = doc.querySelectorAll("a[href$='.pdf']");
-    menuDiv.innerHTML = "";
+    doc.querySelectorAll('.duyuru .all').forEach(el => {
+        const aTag = el.querySelector('a');
+        if (!aTag) return;
 
-    let addedCount = 0;
-    links.forEach(a => {
-      if (addedCount >= 5) return; // Sadece en güncel 5 menüyü gösterelim
-
-      let href = a.getAttribute('href');
-      if (!href.startsWith('http')) {
-        href = "https://sksdb.ardahan.edu.tr" + href;
-      }
-
-      // Başlığı çıkarma mantığı (Sitenin karmaşık SPAN yapısını temizlemek için)
-      let text = a.textContent.trim();
-      if (!text || text.toLowerCase().includes("tıkla")) {
-        if (a.parentElement && a.parentElement.tagName === 'SPAN') {
-          text = a.parentElement.textContent.replace(/Tıklayınız\.*/gi, "").trim();
-        } else {
-          // Hiç isimlendirme bulunamazsa PDF adının kendisini yansıt
-          text = decodeURIComponent(href.split('/').pop().replace('.pdf', ''));
+        let href = aTag.getAttribute('href') || '';
+        if (!href.startsWith('http')) {
+            href = origin + (href.startsWith('/') ? href : '/' + href);
         }
-      }
-      text = text.replace(/için\s*$/, "").trim(); // Sondaki gereksiz 'için' kelimesini at
 
-      const item = document.createElement('a');
-      item.href = href;
-      item.target = "_blank";
-      item.className = "list-item menu-item";
-      item.innerHTML = `
+        const titleSpan = aTag.querySelector('span');
+        const title     = (titleSpan ? titleSpan.textContent : aTag.textContent).trim();
+        const dayEl     = aTag.querySelector('.tarih b');
+        const monthEl   = aTag.querySelector('.tarih div');
+        const dateText  = (dayEl && monthEl)
+            ? `${dayEl.textContent.trim()} ${monthEl.textContent.trim()}`
+            : '';
+
+        if (title) items.push({ href, title, dateText });
+    });
+
+    return items;
+}
+
+// ─── Parser: ibef ve diğer fakülte siteleri (ul > li > a + .event-date) ─────
+//     ``base`` parametresi: hangi domain'den geldiğini belirler (href'leri tamamlamak için)
+function parseIbef(doc, base) {
+    const items = [];
+    const BASE  = base || 'https://ibef.ardahan.edu.tr';
+
+    doc.querySelectorAll('.blog-post-inner ul li').forEach(li => {
+        const aTag = li.querySelector('a');
+        if (!aTag) return;
+
+        let href = aTag.getAttribute('href') || '';
+        if (!href.startsWith('http')) {
+            href = BASE + (href.startsWith('/') ? href : '/' + href);
+        }
+
+        // Başlığı temizle: .blink span ("Yeni" / "Önemli" gibi etiketler) çıkar
+        const aClone = aTag.cloneNode(true);
+        aClone.querySelectorAll('.blink').forEach(el => el.remove());
+        const title = aClone.textContent.replace(/\s+/g, ' ').trim();
+
+        // Tarih: .event-date içindeki metni al
+        const dateEl   = li.querySelector('.event-date');
+        const dateText = dateEl
+            ? dateEl.textContent.replace(/\s+/g, ' ').trim()
+            : '';
+
+        if (title) items.push({ href, title, dateText });
+    });
+
+    return items;
+}
+
+// ─── Duyuruları ekrana çiz ────────────────────────────────────────────────────
+function renderAnnouncements(items) {
+    const listDiv = document.getElementById('duyurular-list');
+    listDiv.innerHTML = '';
+
+    if (items.length === 0) {
+        listDiv.innerHTML = "<div class='error'>Duyuru bulunamadı. Lütfen daha sonra tekrar deneyin.</div>";
+        return;
+    }
+
+    items.forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'list-item';
+        el.innerHTML = `
+            <div class="list-item-header">
+                <a href="${item.href}" target="_blank" class="item-content">
+                    <div class="item-date">
+                        <span class="item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </span>
+                        ${item.dateText}
+                    </div>
+                    <div class="item-title">${item.title}</div>
+                </a>
+                <button class="expand-btn" title="Kısa Açıklamayı Gör">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+            </div>
+            <div class="item-details" style="display: none;">
+                <div class="item-details-content">
+                    <div class="loading-mini">Yükleniyor...</div>
+                </div>
+            </div>
+        `;
+
+        const expandBtn = el.querySelector('.expand-btn');
+        const detailsDiv = el.querySelector('.item-details');
+        const detailsContent = el.querySelector('.item-details-content');
+
+        expandBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+
+            const isExpanded = detailsDiv.style.display === 'block';
+
+            if (isExpanded) {
+                detailsDiv.style.display = 'none';
+                expandBtn.classList.remove('expanded');
+            } else {
+                detailsDiv.style.display = 'block';
+                expandBtn.classList.add('expanded');
+
+                if (!item.shortDescLoaded) {
+                    try {
+                        const res = await fetch(item.href);
+                        const html = await res.text();
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+
+                        let text = '';
+                        const paragraphs = doc.querySelectorAll('.icerik p, .blog-post-content p, #page-content p, p');
+                        for (let p of paragraphs) {
+                            // HTML elementlerini temizleyip sadece yazıyı alıyoruz
+                            const t = p.textContent.trim().replace(/\s+/g, ' ');
+                            if (t.length > 30) {
+                                text = t;
+                                break;
+                            }
+                        }
+
+                        if (!text) text = "Bu duyuru için sistemde kısa bir açıklama veya özet metni bulunamadı.";
+                        if (text.length > 250) text = text.substring(0, 250) + '...';
+
+                        detailsContent.innerHTML = text;
+                        item.shortDescLoaded = true;
+                    } catch(err) {
+                        detailsContent.innerHTML = '<span class="error-text">Açıklama yüklenirken bir hata oluştu. Lütfen internet bağlantınızı kontrol edin.</span>';
+                    }
+                }
+            }
+        });
+
+        listDiv.appendChild(el);
+    });
+}
+
+// ─── Yemek Menüsü ─────────────────────────────────────────────────────────────
+async function loadMenu() {
+    const menuDiv = document.getElementById('menu-list');
+    try {
+        const res    = await fetch('https://sksdb.ardahan.edu.tr/tr/page/aylik-yemek-menusu/9265');
+        const html   = await res.text();
+        const parser = new DOMParser();
+        const doc    = parser.parseFromString(html, 'text/html');
+
+        const links = doc.querySelectorAll("a[href$='.pdf']");
+        menuDiv.innerHTML = '';
+
+        let addedCount = 0;
+        links.forEach(a => {
+            if (addedCount >= 5) return;
+
+            let href = a.getAttribute('href');
+            if (!href.startsWith('http')) {
+                href = 'https://sksdb.ardahan.edu.tr' + href;
+            }
+
+            let text = a.textContent.trim();
+            if (!text || text.toLowerCase().includes('tıkla')) {
+                if (a.parentElement && a.parentElement.tagName === 'SPAN') {
+                    text = a.parentElement.textContent.replace(/Tıklayınız\.*/gi, '').trim();
+                } else {
+                    text = decodeURIComponent(href.split('/').pop().replace('.pdf', ''));
+                }
+            }
+            text = text.replace(/için\s*$/, '').trim();
+
+            const item    = document.createElement('a');
+            item.href     = href;
+            item.target   = '_blank';
+            item.className = 'list-item menu-item';
+            item.innerHTML = `
                 <div class="menu-icon-wrapper">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
@@ -317,14 +360,14 @@ async function loadMenu() {
                 </div>
                 <div class="item-title">${text}</div>
             `;
-      menuDiv.appendChild(item);
-      addedCount++;
-    });
+            menuDiv.appendChild(item);
+            addedCount++;
+        });
 
-    if (addedCount === 0) {
-      menuDiv.innerHTML = "<div class='error'>Yemek menüsü bulunamadı.</div>";
+        if (addedCount === 0) {
+            menuDiv.innerHTML = "<div class='error'>Yemek menüsü bulunamadı.</div>";
+        }
+    } catch (e) {
+        menuDiv.innerHTML = "<div class='error'>Yemek menüsü yüklenirken hata oluştu.</div>";
     }
-  } catch (e) {
-    menuDiv.innerHTML = "<div class='error'>Yemek menüsü yüklenirken hata oluştu.</div>";
-  }
 }
