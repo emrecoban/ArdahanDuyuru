@@ -21,7 +21,9 @@
 
 ## 📸 Ekran Görüntüsü
 
-![Eklenti Görünümü](/1.1-guncel.png)
+| ![Duyurular](screenshots/Ss1.png) | ![Menü](screenshots/Ss2.png) |
+|:---:|:---:|
+| ![Filtre](screenshots/Ss3.png) | ![Hakkında](screenshots/Ss4.png) |
 
 ---
 
