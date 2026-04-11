@@ -110,6 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
         devInfoBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             devModal.classList.add('open');
+
+            // Manifest'ten versiyon bilgisini çek
+            const versionBadge = document.getElementById('version-badge');
+            if (versionBadge) {
+                const manifest = chrome.runtime.getManifest();
+                versionBadge.textContent = 'v' + manifest.version;
+            }
         });
 
         closeModalBtn.addEventListener('click', () => {
