@@ -3,6 +3,11 @@
   "name": "ARÜ Duyuru ve Menü",
   "version": "1.1.0",
   "description": "Ardahan Üniversitesi (ARÜ) güncel duyurularını ve yemek menüsünü takip eder.",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
   "action": {
     "default_popup": "popup.html",
     "default_title": "Ardahan Üniversitesi"
