@@ -117,6 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const manifest = chrome.runtime.getManifest();
                 versionBadge.textContent = 'v' + manifest.version;
             }
+
+            // Değişiklik günlüğünü dinamik olarak çek ve max 3 tane göster
+            loadChangelog();
         });
 
         closeModalBtn.addEventListener('click', () => {
@@ -161,8 +164,15 @@ async function loadAnnouncementsForFilter(filterValue) {
         announcementCache[filterValue] = items;
 
         // Ana sayfa verisiyse arka plan bildirim kontrolü için kaydet
+        // ÖNEMLİ: Mevcut listeyi ezmeyip yenilerini eskinin üzerine ekliyoruz (Merge)
+        // Böylece background.js eski duyuruları tekrar "yeni" sanmaz.
         if (filterValue === 'all') {
-            chrome.storage.local.set({ seenAnnouncements: items.map(i => i.href) });
+            chrome.storage.local.get(['seenAnnouncements'], (data) => {
+                const seen = data.seenAnnouncements || [];
+                const newHrefs = items.map(i => i.href);
+                const merged = [...new Set([...seen, ...newHrefs])];
+                chrome.storage.local.set({ seenAnnouncements: merged });
+            });
         }
 
         renderAnnouncements(items);
@@ -376,5 +386,59 @@ async function loadMenu() {
         }
     } catch (e) {
         menuDiv.innerHTML = "<div class='error'>Yemek menüsü yüklenirken hata oluştu.</div>";
+    }
+}
+
+// ─── Değişiklik Günlüğünü Okuma ──────────────────────────────────────────────
+async function loadChangelog() {
+    const listDiv = document.getElementById('dynamic-changelog');
+    if (!listDiv || listDiv.dataset.loaded === 'true') return;
+
+    try {
+        const url = chrome.runtime.getURL('CHANGELOG.md');
+        const res = await fetch(url);
+        const text = await res.text();
+
+        const regex = /##\s*\[(.*?)\][^\n]*\n([\s\S]*?)(?=\n##\s*\[|$)/g;
+        let match;
+        const items = [];
+
+        while ((match = regex.exec(text)) !== null) {
+            let version = match[1];
+            let content = match[2].trim();
+            
+            let firstBullet = "";
+            let lines = content.split('\n');
+            for(let line of lines) {
+                line = line.trim();
+                if(line.startsWith('-')) {
+                    firstBullet = line.replace(/^- /, '').replace(/\*/g, '').trim();
+                    break;
+                }
+            }
+            if(!firstBullet) firstBullet = content.substring(0, 100);
+
+            items.push({ version: 'v' + version, desc: firstBullet });
+        }
+
+        if (items.length > 0) {
+            listDiv.innerHTML = '';
+            // En fazla son 3 tanesini al
+            const recent = items.slice(0, 3);
+            recent.forEach(item => {
+                listDiv.innerHTML += `
+                    <div class="changelog-item">
+                        <span class="changelog-version">${item.version}</span>
+                        <span class="changelog-text">${item.desc}</span>
+                    </div>
+                `;
+            });
+            listDiv.dataset.loaded = 'true';
+        } else {
+             listDiv.innerHTML = '<div class="changelog-item"><span class="changelog-text">Günlük bulunamadı.</span></div>';
+        }
+    } catch(err) {
+        console.error("Changelog yüklenemedi:", err);
+        listDiv.innerHTML = '<div class="changelog-item"><span class="changelog-text">Günlük yüklenirken hata oluştu.</span></div>';
     }
 }

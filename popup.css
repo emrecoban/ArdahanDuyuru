@@ -584,6 +584,29 @@ body {
 }
 .modal-header h3 { margin: 0; font-size: 18px; color: var(--text-primary); }
 
+.modal-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.github-icon-link {
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.github-icon-link:hover {
+    color: #0f172a;
+    transform: scale(1.1);
+}
+
+.github-icon-link svg {
+    width: 22px;
+    height: 22px;
+}
+
 .modal-close-icon {
     background: transparent; border: none;
     color: #64748b; cursor: pointer; padding: 4px;

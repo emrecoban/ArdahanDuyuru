@@ -9,6 +9,15 @@ Sürüm numaralandırma formatı: **MAJOR.MINOR.PATCH**
 
 ---
 
+## [1.2.0] — 2026-04-24
+
+### Eklenen & Düzeltilen
+- Bildirimlerdeki (rozet) hatalı sayaç sorunu giderildi (Artık haberler veya etkinlikler yerine, yalnızca yeni duyurular sayılıyor).
+- "Hakkında" ekranına projenin açık kaynak kodlarına yönlendiren Github logosu eklendi.
+- Değişiklik günlüğü `CHANGELOG.md` üzerinden dinamik okutularak otomatik çalışır hale getirildi (Her zaman son 3 güncellemeyi gösterir).
+
+---
+
 ## [1.1.0] — 2026-04-11
 
 ### Eklenen
