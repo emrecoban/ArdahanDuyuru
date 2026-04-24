@@ -28,12 +28,23 @@ async function checkForNewAnnouncements() {
         const res = await fetch(TARGET_URL);
         const text = await res.text();
         
-        // Service Worker'da DOMParser kullanılamaz — Regex ile bağlantıları çekiyoruz
+        // Service Worker'da DOMParser kullanılamaz.
+        // Hatalı bildirimleri ("Haberler" ve "Etkinlikler"in de alınmasını) önlemek için
+        // sadece "duyuru" bölümünü izole ediyoruz.
+        let searchArea = text;
+        const dStart = text.indexOf('class="duyuru"');
+        if (dStart !== -1) {
+            let dEnd = text.indexOf('class="haber"', dStart);
+            if (dEnd === -1) dEnd = text.indexOf('class="etkinlik"', dStart);
+            if (dEnd === -1) dEnd = text.length;
+            searchArea = text.substring(dStart, dEnd);
+        }
+
         const regex = /<div class="all">[\s\S]*?href=['"]([^'"]+)['"]/ig;
         let match;
         const currentLinks = [];
         
-        while ((match = regex.exec(text)) !== null) {
+        while ((match = regex.exec(searchArea)) !== null) {
             let url = match[1];
             if(!url.startsWith('http')) {
                 url = "https://www.ardahan.edu.tr" + (url.startsWith('/') ? url : '/' + url);
