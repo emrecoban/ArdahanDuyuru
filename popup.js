@@ -1,6 +1,11 @@
 // ─── Önbellek: her filtre için ayrı ayrı çekilen duyurular buraya kaydedilir ───
 const announcementCache = {};
 
+// Yemek menüsü seçili tarih ve tip bilgisi
+let selectedDate = new Date();
+let selectedMenuType = 'normal';
+
+
 // ─── Filtre kaynakları: hangi filtre hangi sayfadan çekilir ───────────────────
 //     parser: 'ardahan_main'  →  ana ardahan.edu.tr formatı
 //     parser: 'ibef'          →  fakülte sitesi formatı (ul > li > a + .event-date)
@@ -49,6 +54,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // Bildirim badge'ini sıfırla
     chrome.action.setBadgeText({ text: '' });
     chrome.storage.local.set({ unreadCount: 0 });
+
+    // Yemek Menüsü kontrolleri
+    const menuBtnNormal = document.getElementById('menu-btn-normal');
+    const menuBtnColyak = document.getElementById('menu-btn-colyak');
+    const menuPrevDate = document.getElementById('menu-prev-date');
+    const menuNextDate = document.getElementById('menu-next-date');
+    const menuTodayBtn = document.getElementById('menu-today-btn');
+
+    if (menuBtnNormal && menuBtnColyak) {
+        menuBtnNormal.addEventListener('click', () => {
+            if (selectedMenuType === 'normal') return;
+            selectedMenuType = 'normal';
+            menuBtnNormal.classList.add('active');
+            menuBtnColyak.classList.remove('active');
+            loadMenu();
+        });
+
+        menuBtnColyak.addEventListener('click', () => {
+            if (selectedMenuType === 'colyak') return;
+            selectedMenuType = 'colyak';
+            menuBtnColyak.classList.add('active');
+            menuBtnNormal.classList.remove('active');
+            loadMenu();
+        });
+    }
+
+    if (menuPrevDate) {
+        menuPrevDate.addEventListener('click', () => {
+            selectedDate.setDate(selectedDate.getDate() - 1);
+            loadMenu();
+        });
+    }
+
+    if (menuNextDate) {
+        menuNextDate.addEventListener('click', () => {
+            selectedDate.setDate(selectedDate.getDate() + 1);
+            loadMenu();
+        });
+    }
+
+    if (menuTodayBtn) {
+        menuTodayBtn.addEventListener('click', () => {
+            const today = new Date();
+            if (selectedDate.toDateString() === today.toDateString()) return;
+            selectedDate = today;
+            loadMenu();
+        });
+    }
 
     // İlk yükleme
     loadAnnouncementsForFilter('all');
@@ -335,58 +388,137 @@ function renderAnnouncements(items) {
 // ─── Yemek Menüsü ─────────────────────────────────────────────────────────────
 async function loadMenu() {
     const menuDiv = document.getElementById('menu-list');
+    const displayDateSpan = document.getElementById('menu-display-date');
+    
+    if (displayDateSpan) {
+        displayDateSpan.textContent = formatDateForDisplay(selectedDate);
+    }
+    
+    menuDiv.innerHTML = '<div class="loading">Yemek menüsü yükleniyor...</div>';
+    
+    const dateStr = formatDateToString(selectedDate);
+    
     try {
-        const res    = await fetch('https://sksdb.ardahan.edu.tr/tr/page/aylik-yemek-menusu/9265');
-        const html   = await res.text();
-        const parser = new DOMParser();
-        const doc    = parser.parseFromString(html, 'text/html');
-
-        const links = doc.querySelectorAll("a[href$='.pdf']");
-        menuDiv.innerHTML = '';
-
-        let addedCount = 0;
-        links.forEach(a => {
-            if (addedCount >= 5) return;
-
-            let href = a.getAttribute('href');
-            if (!href.startsWith('http')) {
-                href = 'https://sksdb.ardahan.edu.tr' + href;
-            }
-
-            let text = a.textContent.trim();
-            if (!text || text.toLowerCase().includes('tıkla')) {
-                if (a.parentElement && a.parentElement.tagName === 'SPAN') {
-                    text = a.parentElement.textContent.replace(/Tıklayınız\.*/gi, '').trim();
-                } else {
-                    text = decodeURIComponent(href.split('/').pop().replace('.pdf', ''));
+        let response = await fetch(`https://yemek.ardahan.edu.tr/api/menus/${dateStr}_${selectedMenuType}`);
+        let docSnap = await response.json();
+        
+        // Eğer yeni formatta menü yoksa ve istenen normal menüyse, eski kayıt formatında (sadece tarih) var mı diye kontrol et
+        if (!docSnap.exists && selectedMenuType === 'normal') {
+            response = await fetch(`https://yemek.ardahan.edu.tr/api/menus/${dateStr}`);
+            docSnap = await response.json();
+        }
+        
+        if (docSnap.exists) {
+            const data = docSnap.data;
+            if (data.isHoliday) {
+                menuDiv.innerHTML = `
+                    <div class="holiday-card">
+                        <div class="holiday-icon">🎉</div>
+                        <div class="holiday-title">${data.holidayType || 'Tatil / Yemek Servisi Yok'}</div>
+                        <div class="holiday-desc">Bugün yemek servisi yapılmamaktadır.</div>
+                    </div>
+                `;
+            } else {
+                let html = '<div class="menu-cards-container">';
+                
+                if (data.corba) {
+                    html += `
+                        <div class="menu-card corba">
+                            <div class="menu-card-icon">🍲</div>
+                            <div class="menu-card-info">
+                                <span class="menu-card-category">Çorba</span>
+                                <span class="menu-card-title">${data.corba}</span>
+                            </div>
+                        </div>
+                    `;
                 }
+                if (data.anaYemek) {
+                    html += `
+                        <div class="menu-card anaYemek">
+                            <div class="menu-card-icon">🍽️</div>
+                            <div class="menu-card-info">
+                                <span class="menu-card-category">Ana Yemek</span>
+                                <span class="menu-card-title">${data.anaYemek}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (data.yanYemek) {
+                    html += `
+                        <div class="menu-card yanYemek">
+                            <div class="menu-card-icon">🍚</div>
+                            <div class="menu-card-info">
+                                <span class="menu-card-category">Yan Yemek</span>
+                                <span class="menu-card-title">${data.yanYemek}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (data.garnitur) {
+                    html += `
+                        <div class="menu-card garnitur">
+                            <div class="menu-card-icon">🥗</div>
+                            <div class="menu-card-info">
+                                <span class="menu-card-category">Garnitür / İçecek</span>
+                                <span class="menu-card-title">${data.garnitur}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                html += '</div>';
+                
+                if (data.totalCalories) {
+                    html += `
+                        <div class="menu-calorie-card">
+                            <div class="menu-calorie-icon">🔥</div>
+                            <div class="menu-calorie-info">
+                                <span class="menu-calorie-label">Toplam Kalori</span>
+                                <span class="menu-calorie-val">${data.totalCalories} kcal</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                menuDiv.innerHTML = html;
             }
-            text = text.replace(/için\s*$/, '').trim();
-
-            const item    = document.createElement('a');
-            item.href     = href;
-            item.target   = '_blank';
-            item.className = 'list-item menu-item';
-            item.innerHTML = `
-                <div class="menu-icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
-                        <path d="M7 2v20" />
-                        <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
-                    </svg>
+        } else {
+            menuDiv.innerHTML = `
+                <div class="no-menu-card">
+                    <div class="no-menu-icon">🍽️</div>
+                    <div class="no-menu-title">Menü Bulunamadı</div>
+                    <div class="no-menu-desc">Bu tarihe ait henüz bir menü girişi yapılmamış veya bugün hafta sonu.</div>
                 </div>
-                <div class="item-title">${text}</div>
             `;
-            menuDiv.appendChild(item);
-            addedCount++;
-        });
-
-        if (addedCount === 0) {
-            menuDiv.innerHTML = "<div class='error'>Yemek menüsü bulunamadı.</div>";
         }
     } catch (e) {
-        menuDiv.innerHTML = "<div class='error'>Yemek menüsü yüklenirken hata oluştu.</div>";
+        console.error("Yemek menüsü yüklenirken hata oluştu:", e);
+        menuDiv.innerHTML = "<div class='error'>Yemek menüsü yüklenirken hata oluştu. Lütfen bağlantınızı kontrol edin.</div>";
     }
+}
+
+function formatDateToString(d) {
+    const year  = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day   = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+function formatDateForDisplay(d) {
+    const today = new Date();
+    if (d.toDateString() === today.toDateString()) {
+        return "Bugün, " + d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', weekday: 'long' });
+    }
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+    if (d.toDateString() === tomorrow.toDateString()) {
+        return "Yarın, " + d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', weekday: 'long' });
+    }
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+    if (d.toDateString() === yesterday.toDateString()) {
+        return "Dün, " + d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', weekday: 'long' });
+    }
+    return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', weekday: 'long' });
 }
 
 // ─── Değişiklik Günlüğünü Okuma ──────────────────────────────────────────────
