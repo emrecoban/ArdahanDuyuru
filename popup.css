@@ -447,32 +447,264 @@ body {
     font-weight: 500;
 }
 
-.menu-item {
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 16px;
-    gap: 14px;
+/* ═══════════════════════════════════════════════
+   YEMEK MENÜSÜ YENİ STİLLERİ
+   ═══════════════════════════════════════════════ */
+.menu-header-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
 }
 
-.menu-item .item-title {
-    font-size: 14px;
+.menu-type-toggle {
+    display: inline-flex;
+    background-color: #e2e8f0;
+    padding: 3px;
+    border-radius: 12px;
+    gap: 2px;
+}
+
+.menu-toggle-btn {
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    font-size: 12.5px;
     font-weight: 600;
+    color: var(--text-secondary);
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
 }
 
-.menu-icon-wrapper {
+.menu-toggle-btn:hover {
+    color: var(--text-primary);
+}
+
+.menu-toggle-btn.active {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+}
+
+.menu-date-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.date-nav-btn {
     background: #f1f5f9;
-    color: #10b981;
-    padding: 10px;
+    border: none;
+    color: var(--text-primary);
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.menu-icon-wrapper svg { width: 20px; height: 20px; }
+.date-nav-btn:hover {
+    background: var(--primary);
+    color: white;
+}
 
-.menu-item.list-item::before { background-color: #10b981; }
+.date-nav-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.menu-date-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+#menu-display-date {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.today-btn {
+    border: none;
+    background: #eff6ff;
+    color: var(--primary);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.today-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Yemek Kartları */
+.menu-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
+}
+
+/* Kategoriye özel sol sınır çizgileri */
+.menu-card.corba::before    { background: #3b82f6; content: ''; }
+.menu-card.anaYemek::before  { background: #ef4444; content: ''; }
+.menu-card.yanYemek::before  { background: #6366f1; content: ''; }
+.menu-card.garnitur::before  { background: #10b981; content: ''; }
+
+.menu-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.menu-card.corba .menu-card-icon    { background: #eff6ff; color: #3b82f6; }
+.menu-card.anaYemek .menu-card-icon  { background: #fef2f2; color: #ef4444; }
+.menu-card.yanYemek .menu-card-icon  { background: #e0e7ff; color: #6366f1; }
+.menu-card.garnitur .menu-card-icon  { background: #ecfdf5; color: #10b981; }
+
+.menu-card-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.menu-card-category {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.menu-card-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Kalori Kartı */
+.menu-calorie-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1px solid #fed7aa;
+    border-radius: 14px;
+    margin-top: 14px;
+    box-shadow: var(--shadow-sm);
+}
+
+.menu-calorie-icon {
+    font-size: 18px;
+}
+
+.menu-calorie-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-calorie-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #c2410c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.menu-calorie-val {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ea580c;
+}
+
+/* Tatil / Boş Durum Kartı */
+.holiday-card, .no-menu-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background: white;
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.holiday-icon, .no-menu-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.holiday-title, .no-menu-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.holiday-desc, .no-menu-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
 
 /* ═══════════════════════════════════════════════
    SCROLLBAR

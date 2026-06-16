@@ -9,6 +9,15 @@ Sürüm numaralandırma formatı: **MAJOR.MINOR.PATCH**
 
 ---
 
+## [1.3.0] — 2026-06-14
+
+### Eklenen
+- Yemek menüsü sekmesi tamamen yenilenerek `https://yemek.ardahan.edu.tr/` portalıyla doğrudan entegre edildi.
+- Günlük yemek listesi kartları, kalori bilgisi, normal ve çölyak menü tipi toggle geçişi arayüzü eklendi.
+- Günler arasında geçiş yapmayı sağlayan tarih navigasyon butonları ve "Bugün" hızlı geri dönüş butonu eklendi.
+
+---
+
 ## [1.2.0] — 2026-04-24
 
 ### Eklenen & Düzeltilen

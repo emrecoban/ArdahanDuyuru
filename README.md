@@ -103,7 +103,7 @@ Katkıda bulunmak istiyorsanız lütfen şu adımları izleyin:
 
 ## 👥 Geliştiriciler
 
-- [Mahmut Şaşkın](https://github.com/MahmutSaskn)
+- [Mahmut Şaşkın](https://github.com/MahmutSaskin)
 
 ---
 
